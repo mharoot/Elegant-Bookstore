@@ -45,6 +45,7 @@ class Book extends Model {
 		4. 
 		return $this->where('title', '=', $title )->orWhere('id','=',2)->get(array('title', 'description', 'author', 'genre'));
 		*/
+		return $this->oneToOne('genres','genre','id')->where('title', '=', $title)->get();
         
 	}
 	

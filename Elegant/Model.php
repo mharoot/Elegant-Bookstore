@@ -27,7 +27,7 @@ class Model extends Database {
         if ( $this->where_clause_counter == 0 ) {
              $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
         } else {
-             $this->query .="AND ".$col_name.$arg2."'".$arg3."'";
+             $this->query .=" AND ".$col_name.$arg2."'".$arg3."'";
         }
         return $this;
     }
@@ -44,6 +44,7 @@ class Model extends Database {
 
     public function oneToOne($table_name, $primary_key, $foreign_key) { 
         $this->isOneToOne = TRUE;
+        $this->where_clause_counter++;
         // void function will be part of query building
 
 
