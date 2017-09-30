@@ -5,8 +5,9 @@ include_once("Elegant/Database.php");
 class Model extends Database {
 
     private $isOneToOne = FALSE;
+    private $isManyToMany = FALSE;
     private $query = NULL;
-    private $where_clause_counter = -1;
+    private $where_clause_counter = -1; // anytime a WHERE statement is found in a query we increment.  In MySQL there can never be more than 1 where clause;
 
     public $table_name = NULL;
 
@@ -42,6 +43,15 @@ class Model extends Database {
         return $this;
     }
 
+	public function manyToMany($table_name,$junction_table,$this_primary_key,$primary_key) {
+        /*SELECT * from books INNER JOIN books_authors ON (books.book_id=books_authors.book_id) INNER JOIN authors ON (books_authors.author_id = authors.author_id) where 1*/
+        $this->isManyToMany = TRUE;
+        $this->checkTableExist($table_name);
+        $this->checkTableExist($junction_table);
+        $this->query = $this->table_name." INNER JOIN ".$junction_table." ON (".$this->table_name.".".$this_primary_key."=".$junction_table.".".$this_primary_key.") INNER JOIN ". $table_name." ON (".$junction_table.".".$primary_key."=".$table_name.".".$primary_key.")";
+        return $this;
+    }
+	
     public function oneToOne($table_name, $primary_key, $foreign_key) { 
         $this->isOneToOne = TRUE;
         $this->where_clause_counter++;
@@ -65,10 +75,11 @@ class Model extends Database {
         $final_query = 'SELECT ';
         if ($cols == null) {
             // what if we have called oneToOne
-            if ($this->isOneToOne)
+            if ($this->isOneToOne || $this->isManyToMany)
                 $final_query .= "* FROM ";//.$this->table_name;
             else
                 $final_query .= "* FROM ".$this->table_name;
+            
                 
         } else {
             $length = sizeof($cols) -1;
@@ -78,19 +89,21 @@ class Model extends Database {
             $final_query .= $cols[$length];
             // what if were calling oneToOne
 
-            if ($this->isOneToOne)
+            if ($this->isOneToOne || $this->isManyToMany)
                 $final_query .= " FROM ";//.$this->table_name;
             else
                 $final_query .= " FROM ".$this->table_name;
         }
 
         //reset properties
-        $this->where_clause_counter = 0;
+        $this->where_clause_counter = -1;
         $this->isOneToOne = FALSE;
+        $this->isManyToMany = FALSE;
 
 
         if ($this->query !== NULL) {
             $final_query .= $this->query;
+            //file_put_contents('test.txt', $final_query); // for debugging until query builder class is made
             $this->query($final_query);
             return $this->resultset();
         }  else {

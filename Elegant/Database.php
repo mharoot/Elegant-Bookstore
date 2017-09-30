@@ -5,7 +5,7 @@ class Database {
 	private $host       = 'localhost';
 	private $user       = 'root';
 	private $password   = 'password';
-	private $database   = 'mvc';
+	private $database   = 'marvins_mvc';
 
 	private $connection = null;
 	private $error = null;
