@@ -25,8 +25,11 @@ class Model extends Database {
 
     public function where($col_name, $arg2, $arg3 ){
         $this->where_clause_counter++;
-        if ( $this->where_clause_counter == 0 ) {
-             $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+        if ( $this->where_clause_counter == 0) {
+            if ($this->query == NULL)
+                $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+            else 
+                $this->query .=" WHERE ".$col_name.$arg2."'".$arg3."'";
         } else {
              $this->query .=" AND ".$col_name.$arg2."'".$arg3."'";
         }
@@ -36,7 +39,10 @@ class Model extends Database {
     public function orWhere($col_name, $arg2, $arg3 ){
         $this->where_clause_counter++;
         if ( $this->where_clause_counter == 0 ) {
-             $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+            if ($this->query == NULL)
+                $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+            else
+                $this->query .=" WHERE ".$col_name.$arg2."'".$arg3."'";
         } else {
              $this->query .=" OR ".$col_name.$arg2."'".$arg3."'";
         }
@@ -48,13 +54,15 @@ class Model extends Database {
         $this->isManyToMany = TRUE;
         $this->checkTableExist($table_name);
         $this->checkTableExist($junction_table);
-        $this->query = $this->table_name." INNER JOIN ".$junction_table." ON (".$this->table_name.".".$this_primary_key."=".$junction_table.".".$this_primary_key.") INNER JOIN ". $table_name." ON (".$junction_table.".".$primary_key."=".$table_name.".".$primary_key.")";
+        if($this->query == NULL)
+            $this->query = $this->table_name." JOIN ".$junction_table." ON (".$this->table_name.".".$this_primary_key."=".$junction_table.".".$this_primary_key.") JOIN ". $table_name." ON (".$junction_table.".".$primary_key."=".$table_name.".".$primary_key.")";
+        else
+             $this->query .= " JOIN ".$junction_table." ON (".$this->table_name.".".$this_primary_key."=".$junction_table.".".$this_primary_key.") JOIN ". $table_name." ON (".$junction_table.".".$primary_key."=".$table_name.".".$primary_key.")";
         return $this;
     }
 	
     public function oneToOne($table_name, $primary_key, $foreign_key) { 
         $this->isOneToOne = TRUE;
-        $this->where_clause_counter++;
         // void function will be part of query building
 
 
@@ -63,7 +71,7 @@ class Model extends Database {
         // check if the table we are trying to join to exists
         $this->checkTableExist($table_name);
 
-        $this->query = $this->table_name." JOIN ".$table_name." WHERE ".$this->table_name.".".$primary_key."=".$table_name.".".$foreign_key;
+        $this->query = $this->table_name." JOIN ".$table_name." ON ".$this->table_name.".".$primary_key."=".$table_name.".".$foreign_key;
         
 
         return $this;
@@ -103,7 +111,7 @@ class Model extends Database {
 
         if ($this->query !== NULL) {
             $final_query .= $this->query;
-            //file_put_contents('test.txt', $final_query); // for debugging until query builder class is made
+            file_put_contents('oneToOneAndManyToManyTest.txt', $final_query); // for debugging until query builder class is made
             $this->query($final_query);
             return $this->resultset();
         }  else {

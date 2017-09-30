@@ -80,6 +80,14 @@ class BookTest extends TestCase
         $this->assertTrue(sizeof($result) > 0);
     }
 
+    public function test_one_to_one_with_many_to_many_get_cols_function()
+    {
+        $cols = array('title', 'description', 'author_name', 'genre_name');
+        $book = new Book();
+        $result = $book->oneToOne('genres','genre_id','id')->manyToMany('authors','books_authors','book_id','author_id')->get($cols);
+        $this->assertTrue(sizeof($result) > 0);
+    }
+
     	/*
 		--working relations--
 
