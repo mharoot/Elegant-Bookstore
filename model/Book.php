@@ -6,11 +6,15 @@ include_once("Elegant/Model.php");
 class Book extends Model {
 
 
-
+	/* 
+		Every instance of a model should have properties like table_name, primary key, etc;
+		Before the parent::__construct().
+	*/
 	public function __construct()  
 	{  
-			parent::__construct();
 			$this->table_name = 'books';
+			parent::__construct();
+
 	}
 
 

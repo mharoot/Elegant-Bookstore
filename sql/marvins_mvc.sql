@@ -44,7 +44,7 @@ INSERT INTO `authors` (`author_id`, `author_name`) VALUES
 --
 
 CREATE TABLE `books` (
-  `book_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(250) NOT NULL,
   `description` text NOT NULL,
   `genre_id` int(9) DEFAULT NULL
@@ -54,7 +54,7 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_id`, `title`, `description`, `genre_id`) VALUES
+INSERT INTO `books` (`id`, `title`, `description`, `genre_id`) VALUES
 (1, 'The Algorithm Design Manual', 'This newly expanded and updated second edition of the best-selling classic continues to take the \"mystery\" out of designing algorithms, and analyzing their efficacy and efficiency. Expanding on the first edition, the book now serves as the primary textbook of choice for algorithm design courses while maintaining its status as the premier practical reference guide to algorithms for programmers, researchers, and students.', 1),
 (2, 'Cracking the Coding Interview: 189 Programming Questions and Solutions', 'I am not a recruiter. I am a software engineer. And as such, I know what it\'s like to be asked to whip up brilliant algorithms on the spot and then write flawless code on a whiteboard. I\'ve been through this as a candidate and as an interviewer. ', 1),
 (3, 'Programming Challenges: The Programming Contest Training Manual', 'There are many distinct pleasures associated with computer programming. Craftsm- ship has its quiet rewards, the satisfaction that comes from building a useful object and making it work. Excitement arrives with the ?ash of insight that cracks a previously intractable problem. The spiritual quest for elegance can turn the hacker into an artist. Therearepleasuresinparsimony,insqueezingthelastdropofperformanceoutofclever algorithms ', 1),
