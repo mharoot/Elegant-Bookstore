@@ -2,17 +2,23 @@
  ini_set('display_errors',1);
  error_reporting(E_ALL);
 class Database {
-	private $host       = 'localhost';
-	private $user       = 'root';
-	private $password   = 'password';
-	private $database   = 'marvins_mvc';
+	private $host       ;
+	private $user       ;
+	private $password   ;
+	private $database   ;
 
 	private $connection = null;
 	private $error = null;
 	
 	private $stmt = null;
 
-	function __construct() {
+	function __construct() 
+	{
+		include_once('dbconfig.php');
+		$this->host     = DB_HOST;
+		$this->user     = DB_USER;
+		$this->password = DB_PASS;
+		$this->database = DB_NAME;
 		$conn = $this->connectDB();
 		$this->connection = $conn;
 	}
