@@ -1,1 +1,1 @@
-SELECT * FROM books JOIN books_authors ON (books.author_id=books_authors.author_id) JOIN authors ON (books_authors.author_id=authors.author_id)
+1
