@@ -1,6 +1,7 @@
 
 #In order to run QueryBuilder Tests on linux use the following command:
 phpunit --bootstrap  Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox
+
 #In order to run Book Tests on linux use the following command:
 phpunit --bootstrap  model/Book.php tests/BookTest.php --testdox
 
