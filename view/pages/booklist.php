@@ -3,10 +3,10 @@ ini_set('display_errors',1);
  error_reporting(E_ALL); 
 
  ?>
-<h1> Elegant ORM </h1>
-<h2> Relation Functions</h1>
-<h3> manyToMany Function</h3>
-<p> A book can have many authors, and an author can write many books </p>
+ <div class="jumbotron">
+
+<h2> Elegant ORM - Many to Many Relations</h2>
+<p> A book can have many authors, and an author can write many books.</p>
 <p> The Elegant ORM code snippet required for these results: </p> 
 <code> $books = $this->manyToMany('authors','books_authors','book_id','author_id')->get(array('author_name', 'description', 'title')); </code>
 <table class="table table-hover">
@@ -34,17 +34,4 @@ ini_set('display_errors',1);
 
 	?>
 </table>
-<?php
-
-//print_r($books);
-// print_r($books[0]);
-// echo "</br>";
-// print_r($books[0]['id']);
-// echo "</br>";
-// print_r($books[0]['title']);
-// echo "</br>";
-// echo "</br>";
-// print_r($books[1]);
-
-
-?>
+</div>

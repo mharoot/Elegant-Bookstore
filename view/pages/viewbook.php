@@ -1,7 +1,6 @@
-<h1> Elegant ORM </h1>
-<h2> Relation Functions</h2>
-<h3> Chaining oneToOne with manyToMany with a where clause </h3>
-<p> The Elegant ORM code snippet required for these results: </p> 
+<div class="jumbotron">
+<h2> Elegant ORM - One to One and Many to Many Relation Chaining</h2>
+<p> In this particular example there is a chaining of the oneToOne function with the manyToMany function. We also chain it with a call to the where function.  Lastly we call get to retrieve the results. The Elegant ORM code snippet required for these results: </p> 
 <code>
 	$result = $this->oneToOne('genres','genre_id','id')->manyToMany('authors', 'books_authors','book_id','author_id')->where('title', '=', $title)->get(); 
 </code>
@@ -34,3 +33,4 @@
 ?>
 	</tr>
 </table>
+</div>
