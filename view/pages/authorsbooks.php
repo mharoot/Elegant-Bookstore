@@ -16,9 +16,12 @@
 	foreach ($books_by_author as $book_by_author ) 
 	{ 
 ?>
-		<li> <?php echo $book_by_author['title']; ?> </li>
+		<li> <?php echo '<a href="index.php?book='.$book_by_author['title'].'">'.$book_by_author['title'].'</a>'; ?> </li>
 <?php 
 	}
 ?>
 	</ul>
+	<br>
+	<a class="btn btn-primary" href="http://localhost/elegantbookstore">Get Book List</a>
+
 </div>

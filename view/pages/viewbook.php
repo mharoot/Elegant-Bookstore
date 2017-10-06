@@ -22,7 +22,8 @@
 	foreach ($book as $b ) 
 	{	
 		//building the list of author(s)
-		$authors .= '<li>'.$b['author_name'].' </li>';
+		//<a href="index.php?author=Steven S. Skiena">Steven S. Skiena</a>
+		$authors .= '<li><a href="index.php?author='.$b['author_name'].'">'.$b['author_name'].'</a> </li>';
 	}
 
 	echo '<td>' . $book[0]['title'] .'</td>';
@@ -33,4 +34,6 @@
 ?>
 	</tr>
 </table>
+<br>
+<a class="btn btn-primary" href="http://localhost/elegantbookstore">Get Book List</a>
 </div>
