@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `authors` (
-  `author_id` int(9) NOT NULL,
+  `id` int(9) NOT NULL,
   `author_name` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -29,7 +29,7 @@ CREATE TABLE `authors` (
 -- Dumping data for table `authors`
 --
 
-INSERT INTO `authors` (`author_id`, `author_name`) VALUES
+INSERT INTO `authors` (`id`, `author_name`) VALUES
 (1, 'Steven S. Skiena'),
 (2, 'Miguel A. Revilla'),
 (3, 'Gayle Laakmann McDowell'),
@@ -92,14 +92,14 @@ INSERT INTO `books_authors` (`book_id`, `author_id`) VALUES
 
 CREATE TABLE `genres` (
   `id` int(9) NOT NULL,
-  `genre_name` varchar(250) DEFAULT NULL
+  `name` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `genres`
 --
 
-INSERT INTO `genres` (`id`, `genre_name`) VALUES
+INSERT INTO `genres` (`id`, `name`) VALUES
 (1, 'Educational'),
 (2, 'Mystery'),
 (3, 'Romance');
@@ -112,13 +112,13 @@ INSERT INTO `genres` (`id`, `genre_name`) VALUES
 -- Indexes for table `authors`
 --
 ALTER TABLE `authors`
-  ADD PRIMARY KEY (`author_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`book_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `genres`
@@ -134,12 +134,12 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `author_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `genres`
 --
