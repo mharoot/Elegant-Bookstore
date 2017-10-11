@@ -9,6 +9,9 @@ ini_set('display_errors',1);
 <p> A book can have many authors, and an author can write many books.</p>
 <p> The Elegant ORM code snippet required for these results: </p> 
 <code> $books = $this->manyToMany('authors','books_authors','book_id','author_id')->get(array('author_name', 'description', 'title')); </code>
+</br>
+<img style="padding:10px" src="assets/images/ManyToMany.png"></img>
+
 <table class="table table-hover">
 	<thead>
       <tr>

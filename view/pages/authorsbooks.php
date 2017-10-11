@@ -8,6 +8,9 @@
 	$result = $this->manyToMany('books','books_authors','author_id','book_id')->where('author_name','=',$author)->get()
 </code>
 
+<img style="padding:10px" src="assets/images/ManyToMany.png"></img>
+
+
 <?php 
 	echo '<h4> Author '. $books_by_author[0]['author_name']. '</h4>';
 ?>
