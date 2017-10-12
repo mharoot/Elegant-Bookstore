@@ -119,7 +119,8 @@ class QueryBuilder
 
 
 
-    public function oneToOne($table_name, $primary_key, $foreign_key) { 
+    public function oneToOne($table_name, $primary_key, $foreign_key) 
+    { 
         $this->isOneToOne = TRUE;
         // void function will be part of query building
 

@@ -12,6 +12,7 @@ include_once("model/Author.php");
 class Controller {
 	public $book_model;
 	public $author_model;
+	public $getRequests = ['author', 'book', 'uml'];
 	
 	public function __construct()  
     {  
@@ -22,7 +23,18 @@ class Controller {
 	
 	public function invoke()
 	{
-		if (!isset($_GET['book']) && !isset($_GET['author']))
+		$noGetRequests = TRUE;
+
+		for ($i = 0; $i < count($this->getRequests); $i++)
+		{
+			
+			if ( isset($_GET[$this->getRequests[$i]]) )
+			{
+				$noGetRequests = FALSE;
+			}
+		}
+
+		if($noGetRequests)
 		{
 			// no special book is requested, we'll show a list of all available books
 			$books = $this->book_model->getBookList();
@@ -46,6 +58,13 @@ class Controller {
 			$books_by_author = $this->author_model->getBooksByAuthor($_GET['author']);
 			include 'view/templates/header.php';
 			include 'view/pages/authorsbooks.php';
+			include 'view/templates/footer.php';
+		}
+
+		if (isset($_GET['uml']))
+		{
+			include 'view/templates/header.php';
+			include 'UML.html';
 			include 'view/templates/footer.php';
 		}
 
