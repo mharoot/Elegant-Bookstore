@@ -38,5 +38,4 @@
 	</tr>
 </table>
 <br>
-<a class="btn btn-primary" href=".">Get Book List</a>
 </div>
