@@ -12,7 +12,7 @@ ini_set('display_errors',1);
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
 
-<table class="table table-hover">
+<table id="booklist" class="table table-hover table-striped">
 	<thead>
       <tr>
         <th>Title</th>

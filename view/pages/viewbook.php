@@ -5,7 +5,7 @@
 	$result = $this->oneToOne('genres','genre_id','id')->manyToMany('authors', 'books_authors','book_id','author_id')->where('title', '=', $title)->get(); 
 </code>
 </br>
-<img style="padding:10px" src="assets/images/OneToOneChainedManyToMany.png"></img>
+<img class="relationsImage" src="assets/images/OneToOneChainedManyToMany.png"></img>
 
 <table class="table table-hover">
 	<thead>
