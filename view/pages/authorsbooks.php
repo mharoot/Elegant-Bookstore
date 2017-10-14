@@ -4,10 +4,12 @@
 <p> Another exmample of the manyToMany Function chaining with a where clause.  One author can write many books  the specific books he or she writes is determined by chaining with a where clause</p> 
 
 <p> The Elegant ORM code snippet required for these results: </p> 
-<code>
-	$result = $this->manyToMany('books','books_authors','author_id','book_id')->where('author_name','=',$author)->get()
-</code>
-
+<div style="height: 5em; margin-bottom:10px;" class="code-window animate fade-in">
+<div style="height: 5em;" class="code-editor CodeFlask"><div style="height: 5em;" class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">$result <span class="token operator">=</span> $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">manyToMany</span><span class="token punctuation">(</span><span class="token string">'books'</span><span class="token punctuation">,</span><span class="token string">'books_authors'</span><span class="token punctuation">,</span><span class="token string">'author_id'</span><span class="token punctuation">,</span><span class="token string">'book_id'</span><span class="token punctuation">)</span>
+	       <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span><span class="token string">'='</span><span class="token punctuation">,</span>$author<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>
+</div>
+</br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
 
 
