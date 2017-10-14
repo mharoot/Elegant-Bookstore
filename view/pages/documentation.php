@@ -33,7 +33,9 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 <p>Inside the Elegant folder, you can find the dbconfig.php file.  Set the proper configurations to use with your database.
 <div style="height:10em" class="call-to-action-wrapper">
 <div style="height:10em" class="code-window animate fade-in">
-    <div style="height:10em" class="code-editor CodeFlask"><div style="height:10em" class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript"><span class="token operator">&lt;</span><span class="token operator">?</span>php
+    <div class="code-editor CodeFlask">
+        <div class="CodeFlask__textarea"></div>
+        <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token comment" spellcheck="true">/*
         Elegant/dbconfig.php
     */</span>
@@ -41,8 +43,10 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
     <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"DB_USER"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"DB_PASS"</span><span class="token punctuation">,</span><span class="token string">"your-password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"DB_NAME"</span><span class="token punctuation">,</span><span class="token string">"your-database-name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
@@ -64,15 +68,19 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 <p>Now, let's look at an example <code class=" language-php">Book</code> model, which we will use to retrieve and store information from our <code class=" language-php">books</code> database table:</p>
 <div style="height:10em" class="call-to-action-wrapper">
 <div style="height:10em" class="code-window animate fade-in">
-    <div style="height:10em" class="code-editor CodeFlask"><div style="height:10em" class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript"><span class="token operator">&lt;</span><span class="token operator">?</span>php
-        <span class="token function">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <div class="code-editor CodeFlask">
+        <div class="CodeFlask__textarea"></div>
+        <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+        <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
         <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//</span>
         <span class="token punctuation">}</span>
-<span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
@@ -82,8 +90,10 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 
 <div style="height:17em" class="call-to-action-wrapper">
 <div style="height:17em" class="code-window animate fade-in">
-    <div style="height:17em" class="code-editor CodeFlask"><div style="height:17em" class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
-        <span class="token function">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <div style="height:17em" class="code-editor CodeFlask">
+        <div style="height:17em" class="CodeFlask__textarea"></div>
+        <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php">    <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+        <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
         <span class="token punctuation">{</span>
             <span class="token keyword">public</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
@@ -93,11 +103,13 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
                 *
                 * @var string
                 */</span>
-                $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">&gt;</span>table_name <span class="token operator">=</span> <span class="token string">'books'</span><span class="token punctuation">;</span>
+                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">table_name</span> <span class="token operator">=</span> <span class="token string">'books'</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-    <span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+    <span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
@@ -113,16 +125,19 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 
 <div style="height:14em" class="call-to-action-wrapper">
 <div style="height:14em" class="code-window animate fade-in">
-    <div style="height:14em" class="code-editor CodeFlask"><div style="height:14em"class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
-        $book_model  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        $cols  <span class="token operator">=</span> <span class="token function">array</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'author'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'genre'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        $books <span class="token operator">=</span> $book_model<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'active'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">)</span>
+    <div style="height:14em" class="code-editor CodeFlask"><div style="height:14em"class="CodeFlask__textarea"></div>
+    <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php">    <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+        <span class="token variable">$book_model</span>  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$cols</span>  <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'author'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'genre'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$book_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'active'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">)</span>
                             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'Harry Potter'</span><span class="token punctuation">)</span>
                             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'desc'</span><span class="token punctuation">)</span>
                             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
-                            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token keyword">get</span><span class="token punctuation">(</span>$cols<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+                            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$cols</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
@@ -135,20 +150,24 @@ Since Elegant models are query builders, you should review all of the methods av
 
 <div style="height:14em" class="call-to-action-wrapper">
 <div style="height:14em" class="code-window animate fade-in">
-    <div class="code-editor CodeFlask"><textarea class="CodeFlask__textarea"></textarea><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
+    <div class="code-editor CodeFlask">
+        <div class="CodeFlask__textarea"></div>
+        <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php">    <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
         <span class="token comment" spellcheck="true">/*    in controller    */</span>
-        $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">&gt;</span>book_model <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        $books <span class="token operator">=</span> $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">&gt;</span>book_model<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getBookList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        include <span class="token string">'view/templates/header.php'</span><span class="token punctuation">;</span>
-        include <span class="token string">'view/pages/booklist.php'</span><span class="token punctuation">;</span>
-        include <span class="token string">'view/templates/footer.php'</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">book_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">book_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getBookList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">include</span> <span class="token string">'view/templates/header.php'</span><span class="token punctuation">;</span>
+        <span class="token keyword">include</span> <span class="token string">'view/pages/booklist.php'</span><span class="token punctuation">;</span>
+        <span class="token keyword">include</span> <span class="token string">'view/templates/footer.php'</span><span class="token punctuation">;</span>
 
         <span class="token comment" spellcheck="true">/*    in view    */</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>$row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> $row <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span>books<span class="token punctuation">)</span><span class="token punctuation">;</span> $row<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            echo $book<span class="token punctuation">[</span>$row<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$row</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$row</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span>books<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$row</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">echo</span> <span class="token variable">$book</span><span class="token punctuation">[</span><span class="token variable">$row</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-    <span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+    <span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
@@ -157,13 +176,17 @@ Since Elegant models are query builders, you should review all of the methods av
 
 <div style="height:10em" class="call-to-action-wrapper">
 <div style="height:10em" class="code-window animate fade-in">
-    <div class="code-editor CodeFlask"><div class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
+    <div class="code-editor CodeFlask">
+        <div class="CodeFlask__textarea"></div>
+        <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php">    <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
         <span class="token comment" spellcheck="true">/*    in view    */</span>
-        <span class="token function">foreach</span><span class="token punctuation">(</span>$books <span class="token keyword">as</span> $book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            echo $book<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$books</span> <span class="token keyword">as</span> <span class="token variable">$book</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">echo</span> <span class="token variable">$book</span><span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-    <span class="token operator">?</span><span class="token operator">&gt;</span>
-</code></pre></div>
+    <span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+
+    </div>
 </div>
 </div>
 
