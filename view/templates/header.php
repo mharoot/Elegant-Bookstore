@@ -22,7 +22,13 @@
         <a class="nav-link" href=".">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./?uml=true">UML of Elegant Bookstore</a>
+        <a class="nav-link" href="./?uml">UML of Elegant Bookstore</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./?documentation">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./?query-builder">Query Builder</a>
       </li>
     </ul>
   </div>

@@ -12,7 +12,7 @@ include_once("model/Author.php");
 class Controller {
 	public $book_model;
 	public $author_model;
-	public $getRequests = ['author', 'book', 'uml'];
+	public $getRequests = ['author', 'book', 'uml', 'documentation', 'query-builder'];
 	
 	public function __construct()  
     {  
@@ -65,6 +65,20 @@ class Controller {
 		{
 			include 'view/templates/header.php';
 			include 'UML.html';
+			include 'view/templates/footer.php';
+		}
+
+		if (isset($_GET['documentation']))
+		{
+			include 'view/templates/header.php';
+			include 'view/pages/documentation.php';
+			include 'view/templates/footer.php';
+		}
+
+		if (isset($_GET['query-builder']))
+		{
+			include 'view/templates/header.php';
+			include 'view/pages/query-builder.php';
 			include 'view/templates/footer.php';
 		}
 

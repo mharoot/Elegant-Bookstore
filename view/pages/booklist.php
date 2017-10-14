@@ -8,6 +8,7 @@ ini_set('display_errors',1);
 <h2> Elegant ORM - Many to Many Relations</h2>
 <p> A book can have many authors, and an author can write many books.</p>
 <p> The Elegant ORM code snippet required for these results: </p> 
+
 <code> $books = $this->manyToMany('authors','books_authors','book_id','author_id')->get(array('author_name', 'description', 'title')); </code>
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
