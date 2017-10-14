@@ -40,10 +40,17 @@ class QueryBuilder
 
     public function update($col_val_pairs)
     {
+        if (!$this->hasWhereClause)
+        {
+            return '';
+        }
+
+
         reset($col_val_pairs);
         $query ="UPDATE ".$this->table_name." SET ";
         $prefix = '';
-        while (list($key, $val) = each($col_val_pairs)) {
+        while (list($key, $val) = each($col_val_pairs)) 
+        {
             $query .= $prefix.$key."='".$val."' ";
             $prefix=', ';
         }
