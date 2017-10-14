@@ -100,7 +100,7 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 <!-- Adding Additional Constraints-->
 <p><a name="adding-additional-constraints"></a></p>
 <h4>Adding Additional Constraints</h4>
-<p>The Elegant <code class=" language-php">all</code> method will return all of the results in the model's table. Since each Elegant model serves as a <a href="#query-builder">query builder</a>, you may also add constraints to queries, and then use the <code class=" language-php">get</code> method to retrieve the results:</p>
+<p>The Elegant <code class=" language-php">all</code> method will return all of the results in the model's table. Since each Elegant model serves as a <a href="./?query-builder">query builder</a>, you may also add constraints to queries, and then use the <code class=" language-php">get</code> method to retrieve the results:</p>
 <pre class=" language-php">
     <code class=" language-php">
     $book_model  = new Book();
@@ -112,7 +112,7 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
                    ->get();
     </code>
 </pre>
-Since Elegant models are query builders, you should review all of the methods available on the <a href="query-builder">query builder</a>. You may use any of these methods in your Elegant queries.</p>
+Since Elegant models are query builders, you should review all of the methods available on the <a href="./?query-builder">query builder</a>. You may use any of these methods in your Elegant queries.</p>
 
 <!-- Adding Additional Constraints-->
 <p><a name="array-of-associative-arrays"></a></p>
