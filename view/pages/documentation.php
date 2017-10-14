@@ -157,7 +157,7 @@ Since Elegant models are query builders, you should review all of the methods av
 
 <div style="height:10em" class="call-to-action-wrapper">
 <div style="height:10em" class="code-window animate fade-in">
-    <div class="code-editor CodeFlask"><textarea class="CodeFlask__textarea"></textarea><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
+    <div class="code-editor CodeFlask"><div class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-javascript"><code class="CodeFlask__code  language-javascript">    <span class="token operator">&lt;</span><span class="token operator">?</span>php
         <span class="token comment" spellcheck="true">/*    in view    */</span>
         <span class="token function">foreach</span><span class="token punctuation">(</span>$books <span class="token keyword">as</span> $book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             echo $book<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
