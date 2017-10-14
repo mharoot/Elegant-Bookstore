@@ -10,7 +10,6 @@ class Model extends Database
 
 
 
-
     function __construct() 
     {
         $this->queryBuilder = new QueryBuilder($this->table_name);
@@ -31,8 +30,18 @@ class Model extends Database
     }
 
 
-
-
+    public function update($col_val_pairs)
+    {
+        $this->checkTableExist();
+        $q = $this->queryBuilder->update($col_val_pairs);
+        if ($q == '')
+        {
+             //redirect('error404.php');
+            return false;
+        }
+        $this->query($q);
+        return $this->execute();
+    }
 
     public function where ($col_name, $arg2, $arg3 )
     {

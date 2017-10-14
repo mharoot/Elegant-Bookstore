@@ -88,6 +88,22 @@ class BookTest extends TestCase
         $this->assertTrue(sizeof($result) > 0);
     }
 
+    public function test_where_update()
+    {
+        $primary_key = 'book_id';
+        $book = new Book();
+        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
+        $result = $book->where($primary_key,'=','1')->update($col_val_pairs);
+        $this->assertTrue($result);
+    }
+     public function test_update_only_shoud_return_false()
+    {
+        $book = new Book();
+        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
+        $result = $book->update($col_val_pairs);
+        $this->assertTrue($result==FALSE);
+    }
+
     	/*
 		--working relations--
 
