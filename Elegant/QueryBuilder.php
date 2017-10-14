@@ -30,6 +30,7 @@ class QueryBuilder
 
 
 
+
     public function all() 
     {
         return 'SELECT * FROM '.$this->table_name;
@@ -37,6 +38,19 @@ class QueryBuilder
     }
 
 
+    public function update($col_val_pairs)
+    {
+        reset($col_val_pairs);
+        $query ="UPDATE ".$this->table_name." SET ";
+        $prefix = '';
+        while (list($key, $val) = each($col_val_pairs)) {
+            $query .= $prefix.$key."='".$val."' ";
+            $prefix=', ';
+        }
+        $query .= $this->query;
+        $this->resetProperties();
+        return $query;
+    }
 
 
 

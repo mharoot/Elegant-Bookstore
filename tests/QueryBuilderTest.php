@@ -72,7 +72,16 @@ class QueryBuilderTest extends TestCase
 
     
 
-    
+    public function test_update()
+    {
+        $primary_table_name = 'books';
+        $primary_key = 'book_id';
+        $queryBuilder = new QueryBuilder($primary_table_name);
+        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
+        $qbQuery = $queryBuilder->where($primary_key,'=','1')->update($col_val_pairs);
+        $query = "UPDATE books SET title='The Algorithm Design Manual' , description='Cool book dude!'  WHERE book_id='1'";
+        $this->assertEquals( $qbQuery, $query);
+    }
 
 
 
