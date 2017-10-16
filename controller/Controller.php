@@ -25,10 +25,11 @@ class Controller {
 	{
 		$noRequests = TRUE;
 
+		// this loop is mandatory since we could not use $_SERVER['REQUEST_METHOD']
 		for ($i = 0; $i < count($this->_routes); $i++)
 		{
 			
-			if ( isset($_GET[$this->_routes[$i]]) )
+			if ( isset($_GET[$this->_routes[$i]]) || isset($_POST[$this->_routes[$i]]) )
 			{
 				$noRequests = FALSE;
 			}
