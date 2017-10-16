@@ -13,6 +13,7 @@
 </br>
 <img class="relationsImage" src="assets/images/OneToOneChainedManyToMany.png"></img>
 
+<form method="POST">
 <table class="table table-hover">
 	<thead>
       <tr>
@@ -43,5 +44,8 @@
 ?>
 	</tr>
 </table>
+<input type="submit" value="update"/>
+</form>
+
 <br>
 </div>

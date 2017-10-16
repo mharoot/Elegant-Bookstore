@@ -12,7 +12,7 @@ include_once("model/Author.php");
 class Controller {
 	public $book_model;
 	public $author_model;
-	public $getRequests = ['author', 'book', 'uml', 'documentation', 'query-builder'];
+	public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook'];
 	
 	public function __construct()  
     {  
@@ -23,18 +23,18 @@ class Controller {
 	
 	public function invoke()
 	{
-		$noGetRequests = TRUE;
+		$noRequests = TRUE;
 
-		for ($i = 0; $i < count($this->getRequests); $i++)
+		for ($i = 0; $i < count($this->_routes); $i++)
 		{
 			
-			if ( isset($_GET[$this->getRequests[$i]]) )
+			if ( isset($_GET[$this->_routes[$i]]) )
 			{
-				$noGetRequests = FALSE;
+				$noRequests = FALSE;
 			}
 		}
 
-		if($noGetRequests)
+		if($noRequests)
 		{
 			// no special book is requested, we'll show a list of all available books
 			$books = $this->book_model->getBookList();
@@ -43,46 +43,69 @@ class Controller {
 			include 'view/templates/footer.php';
 		}
 
-		if(isset($_GET['book']))
-		{
-			// show the requested book
-			$book = $this->book_model->getBook($_GET['book']);
-			include 'view/templates/header.php';
-			include 'view/pages/viewbook.php';
-			include 'view/templates/footer.php';
-		}
+		$this->getRequestHandler();
+		$this->postRequestHandler();
 
-		if (isset($_GET['author']))
-		{
-			// no special book is requested, we'll show a list of all available books
-			$books_by_author = $this->author_model->getBooksByAuthor($_GET['author']);
-			include 'view/templates/header.php';
-			include 'view/pages/authorsbooks.php';
-			include 'view/templates/footer.php';
-		}
 
-		if (isset($_GET['uml']))
-		{
-			include 'view/templates/header.php';
-			include 'UML.html';
-			include 'view/templates/footer.php';
-		}
-
-		if (isset($_GET['documentation']))
-		{
-			include 'view/templates/header.php';
-			include 'view/pages/documentation.php';
-			include 'view/templates/footer.php';
-		}
-
-		if (isset($_GET['query-builder']))
-		{
-			include 'view/templates/header.php';
-			include 'view/pages/query-builder.php';
-			include 'view/templates/footer.php';
-		}
 
 		
+	}
+
+	private function getRequestHandler()
+	{
+		if($_SERVER['REQUEST_METHOD'] == 'GET')
+		{
+			if(isset($_GET['book']))
+			{
+				// show the requested book
+				$book = $this->book_model->getBook($_GET['book']);
+				include 'view/templates/header.php';
+				include 'view/pages/viewbook.php';
+				include 'view/templates/footer.php';
+			}
+
+			if (isset($_GET['author']))
+			{
+				// no special book is requested, we'll show a list of all available books
+				$books_by_author = $this->author_model->getBooksByAuthor($_GET['author']);
+				include 'view/templates/header.php';
+				include 'view/pages/authorsbooks.php';
+				include 'view/templates/footer.php';
+			}
+
+			if (isset($_GET['uml']))
+			{
+				include 'view/templates/header.php';
+				include 'UML.html';
+				include 'view/templates/footer.php';
+			}
+
+			if (isset($_GET['documentation']))
+			{
+				include 'view/templates/header.php';
+				include 'view/pages/documentation.php';
+				include 'view/templates/footer.php';
+			}
+
+			if (isset($_GET['query-builder']))
+			{
+				include 'view/templates/header.php';
+				include 'view/pages/query-builder.php';
+				include 'view/templates/footer.php';
+			}
+
+		}
+	}
+
+	private function postRequestHandler()
+	{
+		if($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			include 'view/templates/header.php';
+			echo 'testing post request handler function';
+			include 'view/templates/footer.php';			
+		}
+
 	}
 }
 
