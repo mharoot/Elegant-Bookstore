@@ -44,7 +44,7 @@
 ?>
 	</tr>
 </table>
-<input type="submit" value="update"/>
+<input type="submit" name="update-viewbook" value="update"/>
 </form>
 
 <br>

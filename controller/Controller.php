@@ -100,11 +100,14 @@ class Controller {
 
 	private function postRequestHandler()
 	{
-		if($_SERVER['REQUEST_METHOD'] == 'POST')
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			include 'view/templates/header.php';
-			echo 'testing post request handler function';
-			include 'view/templates/footer.php';			
+			if ( isset($_POST['update-viewbook']) )
+			{ // the form's submit button was pressed
+				include 'view/templates/header.php';
+				echo 'update-viewbook: testing post request handler function';
+				include 'view/templates/footer.php';
+			}			
 		}
 
 	}
