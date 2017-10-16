@@ -12,7 +12,6 @@
 </div>
 </br>
 <img class="relationsImage" src="assets/images/OneToOneChainedManyToMany.png"></img>
-
 <form method="POST">
 <table class="table table-hover">
 	<thead>
@@ -28,7 +27,6 @@
 <?php 
 
 	$authors = '';
-
 	foreach ($book as $b ) 
 	{	
 		//building the list of author(s)
@@ -36,16 +34,15 @@
 		$authors .= '<li><a href="index.php?author='.$b['author_name'].'">'.$b['author_name'].'</a> </li>';
 	}
 
-	echo '<td>' . $book[0]['title'] .'</td>';
+	echo '<td> ' . $book[0]['title'] .'</td>';
 	echo '<td> <ul>' . $authors . '<ul> </td>';
-	echo '<td>' . $book[0]['description'] . '</td>';
+	echo '<td><textarea name="book_description">' . $book[0]['description'] . '</textarea> </td>';
 	echo '<td>' . $book[0]['genre_name'] . '</td>';
 	
 ?>
 	</tr>
 </table>
-<input type="submit" name="update-viewbook" value="update"/>
+<input type="submit" value="Update" name="update-viewbook"/>
 </form>
-
 <br>
 </div>
