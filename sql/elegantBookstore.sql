@@ -109,9 +109,9 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `address`) VALUES
-(1, 'chad', '232 b'),
-(2, 'chris', '123 a'),
-(3, 'mike', '234 c');
+(1, 'Chad Michaels', '2322 East Harvard Street, Glendale Ca, 91208'),
+(2, 'Chris Evans', '122 West Street, Los Angeles Ca, 91002'),
+(3, 'Mike Phelps', '234 Bel Aire, Beverly Hills CA, 91210');
 
 -- --------------------------------------------------------
 
@@ -153,6 +153,9 @@ INSERT INTO `orders` (`id`, `amount`, `customer_id`) VALUES
 (1, 125, 1),
 (2, 225, 2),
 (3, 300, 3);
+(4, 125, 2),
+(5, 225, 2),
+(6, 300, 3);
 
 --
 -- Indexes for dumped tables
@@ -165,6 +168,13 @@ ALTER TABLE `authors`
   ADD PRIMARY KEY (`author_id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+
+--
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
@@ -175,6 +185,14 @@ ALTER TABLE `books`
 --
 ALTER TABLE `genres`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -193,11 +211,27 @@ ALTER TABLE `books`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+--
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
+
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
