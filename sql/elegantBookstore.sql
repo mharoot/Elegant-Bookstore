@@ -152,7 +152,7 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `amount`, `customer_id`) VALUES
 (1, 125, 1),
 (2, 225, 2),
-(3, 300, 3);
+(3, 300, 3),
 (4, 125, 2),
 (5, 225, 2),
 (6, 300, 3);
