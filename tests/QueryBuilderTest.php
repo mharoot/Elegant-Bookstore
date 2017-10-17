@@ -83,7 +83,28 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals( $qbQuery, $query);
     }
 
+    public function test_insert()
+    {
+        $primary_table_name = 'books';
+        $primary_key = 'book_id';
+        $queryBuilder = new QueryBuilder($primary_table_name);
+        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
+        $qbQuery = $queryBuilder->where($primary_key,'=','1')->insert($col_val_pairs);
+        $query = "INSERT INTO books VALUES title='The Algorithm Design Manual' , description='Cool book dude!'  WHERE book_id='1'";
+        $this->assertEquals( $qbQuery, $query);
+    }
 
+    public function test_one_to_many_get()
+    {
+        $primary_table_name = 'customers';
+        $foreign_table_name = 'orders';
+        $primary_key = 'id';
+        $foreign_key = 'customer_id';
+        $queryBuilder = new QueryBuilder($primary_table_name);
+        $qbQuery = $queryBuilder->oneToMany($foreign_table_name, $primary_key , $foreign_key)->get();
+        $query   = 'SELECT * FROM customers JOIN orders ON customers.id=orders.customer_id';
+        $this->assertEquals( $qbQuery, $query);
+    }    
 
     
 }
