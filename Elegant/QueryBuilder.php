@@ -59,7 +59,25 @@ class QueryBuilder
         return $query;
     }
 
+    public function insert($col_val_pairs)
+    {
+        if (!$this->hasWhereClause)
+        {
+            return '';
+        }
 
+        reset($col_val_pairs);
+        $query ="INSERT INTO ".$this->table_name." VALUES ";
+        $prefix = '';
+        while (list($key, $val) = each($col_val_pairs)) 
+        {
+            $query .= $prefix.$key."='".$val."' ";
+            $prefix=', ';
+        }
+        $query .= $this->query;
+        $this->resetProperties();
+        return $query;
+    }
 
     public function where ( $col_name, $arg2, $arg3 )
     {
@@ -153,9 +171,15 @@ class QueryBuilder
         return $this;
     }
 
+    public function oneToMany($table_name, $primary_key, $foreign_key) { 
+        $this->isOneToMany = TRUE;
+        // void function will be part of query building
 
-
-
+        $this->query = $this->table_name." JOIN ".$table_name." ON ".$this->table_name.".".$primary_key."=".$table_name.".".$foreign_key;
+        file_put_contents("test.txt", $this->query);
+        return $this;
+        
+    }
 
     public function get ($cols = NULL)
     {

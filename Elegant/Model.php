@@ -53,6 +53,20 @@ class Model extends Database
         return $this->execute();
     }
 
+    public function insert($col_val_pairs)
+    {
+        $this->checkTableExist();
+        $q = $this->queryBuilder->insert($col_val_pairs);
+        if ($q == '')
+        {
+             //redirect('error404.php');
+            return false;
+        }
+        $this->query($q);
+        return $this->execute();
+    }
+
+
     public function where ($col_name, $arg2, $arg3 )
     {
         $this->queryBuilder->where($col_name, $arg2, $arg3);
@@ -83,8 +97,6 @@ class Model extends Database
 	
 
 
-
-
     public function oneToOne($table_name, $primary_key, $foreign_key) 
     { 
         $this->checkTableExist($table_name);
@@ -93,7 +105,12 @@ class Model extends Database
     }
 
 
-
+    public function oneToMany($table_name, $primary_key, $foreign_key) 
+    { 
+        $this->checkTableExist($table_name);
+        $this->queryBuilder->oneToMany($table_name, $primary_key, $foreign_key);
+        return $this;
+    }
 
 
     public function get($cols = NULL)
