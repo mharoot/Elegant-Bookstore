@@ -66,8 +66,8 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 <p><a name="Elegant-model-conventions"></a></p>
 <h3>Elegant Model Conventions</h3>
 <p>Now, let's look at an example <code class=" language-php">Book</code> model, which we will use to retrieve and store information from our <code class=" language-php">books</code> database table:</p>
-<div style="height:10em" class="call-to-action-wrapper">
-<div style="height:10em" class="code-window animate fade-in">
+<div style="height:15em" class="call-to-action-wrapper">
+<div style="height:15em" class="code-window animate fade-in">
     <div class="code-editor CodeFlask">
         <div class="CodeFlask__textarea"></div>
         <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -75,7 +75,10 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 
         <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
         <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//</span>
+            <span class="token comment" spellcheck="true">//note: Every model must have a construct and a call to parent.</span>
+            <span class="token keyword">public</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
 <span class="token delimiter important">?&gt;</span></span>
 </code></pre>
@@ -86,7 +89,7 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
 
 <!-- Table Names -->
 <h4>Table Names</h4>
-<p>Note that we did not tell Elegant which table to use for our <code class=" language-php">Book</code> model. By convention, you should use the "snake case", plural name of the class will be used as the table name unless another name is explicitly specified. So, in this case, Elegant for our <code class=" language-php">Book</code> model stores records in the <code class=" language-php">books</code> table. You may specify a custom table by defining a <code class=" language-php">table</code> property on your model.  You may <b>not</b> leave it empty.  It is mandatory to give a table name as done below in the following code snippet:</p>
+<p>Note that we did not tell Elegant which table to use for our <code class=" language-php">Book</code> model. By convention, table names in Elegant use the "snake case" name of the model classes, in all lower case letters unless a different table name is explicitly specified within the model Book's construct as done in the code snippet below:
 
 <div style="height:17em" class="call-to-action-wrapper">
 <div style="height:17em" class="code-window animate fade-in">
@@ -104,6 +107,7 @@ frameworks such as, Laravel, Codeigniter, etc.  Elegant ORM provides an elegant,
                 * @var string
                 */</span>
                 <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">table_name</span> <span class="token operator">=</span> <span class="token string">'books'</span><span class="token punctuation">;</span>
+                <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token delimiter important">?&gt;</span></span>
