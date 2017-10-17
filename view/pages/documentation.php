@@ -21,8 +21,7 @@
 <!-- introduction -->
 <p><a name="introduction"></a></p>
 <h2><a href="#introduction">Introduction</a></h2>
-<p>Elegant is more than just a ORM. Elegant is also a database query builder, with a built-in database handler that enable an active record pattern implementation.  Elegant is adaptable with any custom mvc project and could be used with many other popular php frameworks such as, Laravel and Codeigniter. By simply dropping a copy of the Elegant Directory in any php mvc project you could get started on using the wonderful features of Elegant.  
-Each database table has a corresponding "Model" that interacts with that table. Models allow you to build and execute MySQL queries.
+<p>Elegant is more than just a ORM. Elegant is also a database query builder, with a built-in database handler that enables an active record pattern implementation.  Elegant is adaptable with any custom mvc project and could be used with many other popular php frameworks such as, Laravel and Codeigniter. By simply dropping a copy of the Elegant directory in any php mvc project you could get started on using the wonderful features of Elegant.  Each database table has a corresponding "Model" that interacts with that table. Models allow you to build and execute MySQL queries.
 </p>
 <p>Before getting started, be sure to configure a database connection in <code class=" language-php">Elegant<span class="token operator">/</span>dbconfig<span class="token punctuation">.</span>php</code>. For more information on configuring your database, check out <a href="#database-configuration">the documentation</a>.</p>
 
