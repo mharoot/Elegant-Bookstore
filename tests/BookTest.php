@@ -1,7 +1,7 @@
 <?php
 //in command line run: 
 //phpunit --bootstrap model/Book.php tests/BookTest.php --testdox
-declare(strict_types=1);
+//declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 include_once('model/Book.php');
@@ -96,25 +96,25 @@ class BookTest extends TestCase
         $result = $book->where($primary_key,'=','1')->update($col_val_pairs);
         $this->assertTrue($result);
     }
-     public function test_update_only_shoud_return_false()
+    
+    public function test_update_only_shoud_return_false()
     {
         $book = new Book();
-        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
+        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book and dude!"];
         $result = $book->update($col_val_pairs);
         $this->assertTrue($result==FALSE);
     }
 
-    	/*
-		--working relations--
 
-		
-		--working where and orWhere--
-		3.
-		return $this->where('title', '=', $title )->orWhere('id','=',2)->get();
-
-		4. 
-		return $this->where('title', '=', $title )->orWhere('id','=',2)->get(array('title', 'description', 'author', 'genre'));
-		*/
     
+    public function test_grandparent_inheritance_of_database()
+    {
+        $book = new Book();
+        $book->query(
+            "INSERT INTO books (book_id, title, description, genre_id) VALUES".
+            "(1, 'The Algorithm Design Manual', 'This newly expanded and updated second edition of the best-selling classic continues to take the ".'\"mystery\"'." out of designing algorithms, and analyzing their efficacy and efficiency. Expanding on the first edition, the book now serves as the primary textbook of choice for algorithm design courses while maintaining its status as the premier practical reference guide to algorithms for programmers, researchers, and students.', 1)");
+        $this->assertTrue($book->execute());
+        
+    }
 }
 ?>
