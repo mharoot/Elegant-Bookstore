@@ -89,7 +89,7 @@
 
 <!-- Table Names -->
 <h4>Table Names</h4>
-<p>Note that we did not tell Elegant which table to use for our <code class=" language-php">Book</code> model. By convention, table names in Elegant use the "snake case" name of the model classes, in all lower case letters unless a different table name is explicitly specified within the model Book's construct as done in the code snippet below:
+<p>Note that we did not tell Elegant which table to use for our <code class=" language-php">Book</code> model in the previous code snippet. By convention, table names in Elegant use the "snake case" name of the model classes, in all lower case letters unless a different table name is explicitly specified within the model Book's construct as done in the code snippet below:
 
 <div style="height:17em" class="call-to-action-wrapper">
 <div style="height:17em" class="code-window animate fade-in">
