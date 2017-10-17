@@ -18,10 +18,11 @@ class Model extends Database
             $snake_case = $child_class_that_called_model.'s';
             $this->table_name = strtolower($snake_case);
         }
-        $this->checkTableExist();
         $this->queryBuilder = new QueryBuilder($this->table_name);
 
         parent::__construct();
+        $this->checkTableExist($this->table_name);
+
     }
     
 
