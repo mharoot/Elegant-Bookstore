@@ -12,7 +12,14 @@ class Model extends Database
 
     function __construct() 
     {
+        if ($this->table_name === NULL )
+        {
+            $child_class_that_called_model = get_called_class();
+            $snake_case = $child_class_that_called_model.'s';
+            $this->table_name = strtolower($snake_case);
+        }
         $this->queryBuilder = new QueryBuilder($this->table_name);
+
         parent::__construct();
     }
     
@@ -28,6 +35,7 @@ class Model extends Database
         $this->query($q);
         return $this->resultset();
     }
+
 
 
     public function update($col_val_pairs)
