@@ -18,6 +18,7 @@ class Model extends Database
             $snake_case = $child_class_that_called_model.'s';
             $this->table_name = strtolower($snake_case);
         }
+        $this->checkTableExist();
         $this->queryBuilder = new QueryBuilder($this->table_name);
 
         parent::__construct();
@@ -30,7 +31,7 @@ class Model extends Database
     public function all() 
     {
         // check if this table exists
-        $this->checkTableExist();
+        
         $q = $this->queryBuilder->all();
         $this->query($q);
         return $this->resultset();
@@ -40,7 +41,7 @@ class Model extends Database
 
     public function update($col_val_pairs)
     {
-        $this->checkTableExist();
+        
         $q = $this->queryBuilder->update($col_val_pairs);
         if ($q == '')
         {
@@ -96,7 +97,7 @@ class Model extends Database
 
     public function get($cols = NULL)
     {
-        $this->checkTableExist();
+        
         $q = $this->queryBuilder->get($cols);
         $this->query($q);
         return $this->resultset();
