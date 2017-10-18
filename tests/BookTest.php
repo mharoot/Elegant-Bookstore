@@ -105,7 +105,13 @@ class BookTest extends TestCase
         $this->assertTrue($result==FALSE);
     }
 
-
+    public function test_where_delete()
+    {
+        $title = 'The Algorithm Design Manual';
+        $book = new Book();
+        $result = $book->deleteByTitle($title);
+        $this->assertTrue($result);
+    }
     
     public function test_grandparent_inheritance_of_database()
     {
@@ -116,5 +122,7 @@ class BookTest extends TestCase
         $this->assertTrue($book->execute());
         
     }
+
+
 }
 ?>

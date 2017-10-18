@@ -38,6 +38,17 @@ class Model extends Database
         return $this->resultset();
     }
 
+    public function delete()
+    {
+        $q = $this->queryBuilder->delete();
+        if ($q == '')
+        {
+             //redirect('error404.php');
+            return false;
+        }
+        $this->query($q);
+        return $this->execute();
+    }
 
 
     public function update($col_val_pairs)

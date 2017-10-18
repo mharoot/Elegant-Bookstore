@@ -36,7 +36,21 @@ class QueryBuilder
         return 'SELECT * FROM '.$this->table_name;
        
     }
-
+    
+    public function delete()
+    {
+        if (!$this->hasWhereClause)
+        {
+            return '';
+        }
+ 
+        $query ="DELETE FROM ".$this->table_name;
+ 
+        $query .= $this->query;
+        file_put_contents('test.txt', $query);
+        $this->resetProperties();
+        return $query;
+    }
 
     public function update($col_val_pairs)
     {

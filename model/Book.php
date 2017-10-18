@@ -17,6 +17,11 @@ class Book extends Model {
 
 	}
 
+	public function deleteByTitle($title)
+	{
+		return $this->where('title','=', $title)->delete();
+	}
+
 
 	public function getBookList()
 	{
