@@ -112,7 +112,7 @@ class Controller {
     {
         if ( !isset($_POST['_method']) )
         {
-            
+            return 0;
         }
         
 
