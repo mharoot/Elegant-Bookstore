@@ -33,15 +33,17 @@
 		//<a href="index.php?author=Steven S. Skiena">Steven S. Skiena</a>
 		$authors .= '<li><a href="index.php?author='.$b['author_name'].'">'.$b['author_name'].'</a> </li>';
 	}
-
-	echo '<td> ' . $book[0]['title'] .'</td>';
-	echo '<td> <ul>' . $authors . '<ul> </td>';
-	echo '<td><textarea name="book_description">' . $book[0]['description'] . '</textarea> </td>';
-	echo '<td>' . $book[0]['genre_name'] . '</td>';
-	
 ?>
+	<td>      <?php echo $book[0]['title'];?> </td>
+	<td> <ul> <?php echo $authors; ?>    <ul> </td>
+	<td> 
+		<textarea name="book_description"><?php echo $book[0]['description']; ?></textarea> 
+	</td>
+	<td> <?php echo $book[0]['genre_name']; ?> </td>
+
 	</tr>
 </table>
+<input name="_method" type="hidden" value="PUT">
 <input type="submit" value="Update" name="update-viewbook"/>
 </form>
 <br>
