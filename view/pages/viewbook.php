@@ -37,14 +37,14 @@
 	<td>      <?php echo $book[0]['title'];?> </td>
 	<td> <ul> <?php echo $authors; ?>    <ul> </td>
 	<td> 
-		<textarea name="book_description"><?php echo $book[0]['description']; ?></textarea> 
+		<textarea id="book_description" name="book_description"><?php echo $book[0]['description']; ?></textarea> 
 	</td>
 	<td> <?php echo $book[0]['genre_name']; ?> </td>
 
 	</tr>
 </table>
-<input name="_method" type="hidden" value="PUT">
-<input type="submit" value="Update" name="update-viewbook"/>
+	<input name="_method" type="hidden" value="PUT">
+	<input type="submit" value="Update" name="update-viewbook"/>
 </form>
 <br>
 </div>
