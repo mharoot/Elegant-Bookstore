@@ -44,7 +44,7 @@
 	</tr>
 </table>
 	<input name="_method" type="hidden" value="PUT">
-	<input type="submit" value="Update" name="update-viewbook"/>
+	<input class="btn btn-success" type="submit" value="Update" name="update-viewbook"/>
 </form>
 <br>
 </div>
