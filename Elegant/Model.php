@@ -5,29 +5,32 @@ include_once("QueryBuilder.php");
 class Model extends Database 
 {
     private $queryBuilder = NULL;
+    private $child_class  = NULL;
     public $table_name = NULL;
 
 
 
-
-    function __construct() 
+    function __construct($child_class = NULL) 
     {
+        $child_class_that_called_model = '';
+
         if ($this->table_name === NULL )
         {
-            $child_class_that_called_model = get_called_class();
+            $child_class_that_called_model = get_class($child_class);
             $snake_case = $child_class_that_called_model.'s';
             $this->table_name = strtolower($snake_case);
         }
-        $this->queryBuilder = new QueryBuilder($this->table_name);
 
+        $this->queryBuilder = new QueryBuilder($this->table_name);
+        $this->child_class = $child_class;
         parent::__construct();
         $this->checkTableExist($this->table_name);
-
     }
-    
 
-
-
+    public function getChildProps()
+    {
+        return get_object_vars($this->child_class);
+    }
 
     public function all() 
     {
