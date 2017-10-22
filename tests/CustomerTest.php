@@ -62,19 +62,34 @@ class CustomerTest extends TestCase
     // }
 
 
-    public function test_orm_properties_of_an_instance_of_customer_model_all()
-    {
-        $customers = new Customer();
-        $result = $customers->all();
-        foreach ($result as $customer) {
-            echo $customer->id . PHP_EOL;
-            echo $customer->name . PHP_EOL;
-            echo $customer->address . PHP_EOL . PHP_EOL;
-        }
+    // public function test_orm_properties_of_an_instance_of_customer_model_all()
+    // {
+    //     $customers = new Customer();
+    //     $result = $customers->all();
+    //     foreach ($result as $customer) {
+    //         echo $customer->id . PHP_EOL;
+    //         echo $customer->name . PHP_EOL;
+    //         echo $customer->address . PHP_EOL . PHP_EOL;
+    //     }
         
 
-        $this->assertTrue( true );
+    //     $this->assertTrue( true );
         
+    // }
+
+    // public function test_describe()
+    // {
+    //     $customers = new Customer();
+        
+    //     var_dump($customers->describe('customers'));
+    //     $this->assertTrue( true );
+
+    // }
+
+    public function test_orm_props() {
+        $customer = new Customer();
+        var_dump($customer->id);
+        $this->assertTrue(TRUE);
     }
     
 }

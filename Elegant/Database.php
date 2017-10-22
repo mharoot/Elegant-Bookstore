@@ -101,6 +101,13 @@ class Database {
 
 	}
 
+	public function describe($tableName)
+	{
+		$this->query("DESCRIBE ".$tableName);
+		$this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_COLUMN);
+	}
+
     /*
     use if returning only 1 row returned as an associative array
     */

@@ -25,6 +25,15 @@ class Model extends Database
         $this->child_class = $child_class;
         parent::__construct();
         $this->checkTableExist($this->table_name);
+        
+        $table_cols = $this->describe($this->table_name);
+
+        //dynamically creating child class properties in construct
+        foreach ($table_cols as $col)
+        {
+            $this->child_class->{$col} = NULL;
+        }
+
     }
 
     public function save() // returns boolean
