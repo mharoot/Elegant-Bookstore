@@ -7,6 +7,7 @@ class Model extends Database
     private $queryBuilder = NULL;
     private $child_class  = NULL;
     public $table_name = NULL;
+    private $child_class_cols = [];
 
 
 
@@ -32,6 +33,7 @@ class Model extends Database
         foreach ($table_cols as $col)
         {
             $this->child_class->{$col} = NULL;
+            array_push($this->child_class_cols, $col);
         }
 
     }
@@ -53,18 +55,14 @@ class Model extends Database
         $class_name = get_class($this->child_class);
         $class_vars = get_class_vars($class_name);
         $object_vars  = get_object_vars($this->child_class);
+        var_dump($object_vars);
         $child_props = [];
-        $n = sizeof($class_vars) - 3; // minus 3 from the properties in this model
-        $i = 0;
-        foreach ($class_vars as $property_name => $value) 
+        foreach ($this->child_class_cols as $index => $property_name) 
         {
-            echo "$property_name : $value\n";
+            //echo "$property_name : $value\n";
             
             if( $object_vars[$property_name] !== NULL )
                 $child_props[$property_name] = $object_vars[$property_name];
-            $i++;
-            if($i == 2)
-                break;
         }
         
         return $child_props;
@@ -96,7 +94,7 @@ class Model extends Database
     }
 
 
-    public function update($col_val_pairs)
+    private function update($col_val_pairs)
     {
         
         $q = $this->queryBuilder->update($col_val_pairs);
@@ -109,7 +107,7 @@ class Model extends Database
         return $this->execute();
     }
 
-    public function insert($col_val_pairs)
+    private function insert($col_val_pairs)
     {
         $this->checkTableExist();
         $q = $this->queryBuilder->insert($col_val_pairs);

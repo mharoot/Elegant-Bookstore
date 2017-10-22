@@ -23,8 +23,18 @@ class Customer extends Model {
 	{
 		$this->name = $name;
 		$this->address = $address;
-		$this->save();
+		return $this->save();
 	}
+
+	public function update($name, $address)
+	{
+		$this->name = $name;
+		$this->address = $address;
+		return $this->where('id', '=', '5')->save();
+
+	}
+
+	
 
 	
 }

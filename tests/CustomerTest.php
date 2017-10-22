@@ -86,11 +86,31 @@ class CustomerTest extends TestCase
 
     // }
 
-    public function test_orm_props() {
+
+
+
+
+
+
+
+    // public function test_orm_props() {
+    //     $customer = new Customer();
+    //     var_dump($customer->id);
+    //     $this->assertTrue(TRUE);
+    // }
+
+    public function test_orm_create() {
         $customer = new Customer();
-        var_dump($customer->id);
-        $this->assertTrue(TRUE);
+        $this->assertTrue($customer->create("Michael Harootoonyan", "106 North St. Los Angeles Ca, 91006"));
     }
+
+    public function test_orm_update() {
+        $customer = new Customer();
+        $this->assertTrue($customer->update("Marvin Harootoonyan", "106 North St. Los Angeles Ca, 91006"));
+    }
+
+
+
     
 }
 ?>
