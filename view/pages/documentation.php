@@ -16,12 +16,13 @@
         </ul>
     </li>
     <li>
-        <a href="inserting-and-updating-models">Inserting and Updating Models</a>
+        <a href="inserting-and-updating-models">Inserting &amp; Updating Models</a>
         <ul>
             <li><a href="#inserts">Inserts</a></li>
             <li><a href="#updates">Updates</a></li>
         </ul>
     </li>
+    <li><a href="#deletes">Deletes</a>
 </ul>
 
 
@@ -187,7 +188,7 @@ Since Elegant models are query builders, you should review all of the methods av
 
 <!-- inserting-and-updating-models -->
 <p><a name="inserting-and-updating-models"></a></p>
-<h2>Inserting and Updating Models</h2>
+<h2><a href="#inserting-and-updating-models">Inserting &amp; Updating Models</a></h2>
 </br>
 
 <p><a name="inserts"></a></p>
@@ -247,10 +248,40 @@ Since Elegant models are query builders, you should review all of the methods av
 </div>
 
 
+<!-- Deletes -->
+<p><a name="deletes"></a></p>
+<h2><a href="#deletes">Deletes</a></h2>
+<p>To delete a model, call the <code class=" language-php">delete</code> method on a model instance:</p>
 
+
+<div class="call-to-action-wrapper codesnippet-deletes">
+<div class="code-window animate fade-in codesnippet-deletes">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">removeById</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+</div>
+</div>
 </div>
 
 
 
+
+
+
+
+
+
+</div>
 </article>
 </div>
