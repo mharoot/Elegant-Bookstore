@@ -49,11 +49,12 @@ class CustomerTest extends TestCase
     // }
 
 
-    public function test_orm_properties_of_an_instance_of_customer_model()
+    public function test_orm_properties_of_an_instance_of_customer_model_update()
     {
         $customer = new Customer();
-        $customer->address = "1642 Daily Circle Drive, Glendale Ca 91208";
-        $customer->name    = "Craig Walker";
+        $customer->where('name', '=', 'Greg Walker')->where('address', '=', '1642 Daily Circle Drive, Glendale Ca 91208')->orWhere('id', '=', '4');
+        //$customer->address = "1642 Daily Circle Drive, Glendale Ca 91208";
+        $customer->name    = "Greg Walker";
         
 
         $this->assertTrue( $customer->save() );

@@ -29,7 +29,14 @@ class Model extends Database
 
     public function save() // returns boolean
     {
-        return $this->insert($this->getChildProps());
+        $result = FALSE;
+        if (!$this->queryBuilder->hasWhereClause) {
+            $result = $this->insert($this->getChildProps());
+        } else {
+            file_put_contents("testing-save.txt", "update is being executed");
+            $result = $this->update($this->getChildProps());
+        }
+        return $result;
     }
 
     public function getChildProps()
@@ -43,7 +50,9 @@ class Model extends Database
         foreach ($class_vars as $property_name => $value) 
         {
             echo "$property_name : $value\n";
-            $child_props[$property_name] = $object_vars[$property_name];
+            
+            if( $object_vars[$property_name] !== NULL )
+                $child_props[$property_name] = $object_vars[$property_name];
             $i++;
             if($i == 2)
                 break;

@@ -9,7 +9,7 @@ declare(strict_types=1);
 class QueryBuilder 
 {
 
-    private $hasWhereClause;
+    public $hasWhereClause;
     private $isManyToMany;
     private $isOneToOne;
     private $isOneToMany;
@@ -70,6 +70,7 @@ class QueryBuilder
         }
         $query .= $this->query;
         $this->resetProperties();
+        file_put_contents("update-test.txt", $query);
         return $query;
     }
 
