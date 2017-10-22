@@ -85,12 +85,13 @@ class QueryBuilderTest extends TestCase
 
     public function test_insert()
     {
-        $primary_table_name = 'books';
-        $primary_key = 'book_id';
+        $primary_table_name = 'customers';
+        $primary_key = 'id';
         $queryBuilder = new QueryBuilder($primary_table_name);
-        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
-        $qbQuery = $queryBuilder->where($primary_key,'=','1')->insert($col_val_pairs);
-        $query = "INSERT INTO books VALUES title='The Algorithm Design Manual' , description='Cool book dude!'  WHERE book_id='1'";
+        $col_val_pairs = ['name' => 'Craig Walker', 'address' => "1641 Daily Circle, Glendale Ca, 91208"];
+        $qbQuery = $queryBuilder->insert($col_val_pairs);
+        file_put_contents("test-insert.txt", $qbQuery);
+        $query = "INSERT INTO customers ( name, address ) VALUES ( 'Craig Walker', '1641 Daily Circle, Glendale Ca, 91208' )";
         $this->assertEquals( $qbQuery, $query);
     }
 

@@ -19,6 +19,13 @@ class Customer extends Model {
 
 	}
 
+	public function create($name, $address)
+	{
+		$this->name = $name;
+		$this->address = $address;
+		$this->save();
+	}
+
 	
 }
 

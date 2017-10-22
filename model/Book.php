@@ -13,7 +13,7 @@ class Book extends Model {
 	public function __construct()  
 	{  
 			$this->table_name = 'books';
-			parent::__construct();
+			parent::__construct($this);
 
 	}
 

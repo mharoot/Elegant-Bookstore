@@ -13,7 +13,7 @@ class Author extends Model {
 	public function __construct()  
 	{  
 			$this->table_name = 'authors';
-			parent::__construct();
+			parent::__construct($this);
 
 	}
 

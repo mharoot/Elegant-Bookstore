@@ -75,20 +75,47 @@ class QueryBuilder
 
     public function insert($col_val_pairs)
     {
-        if (!$this->hasWhereClause)
+
+        /*
+INSERT INTO table_name ( field1, field2,...fieldN )
+   VALUES
+   ( value1, value2,...valueN );
+
+        */
+        reset($col_val_pairs);
+        $query ="INSERT INTO ".$this->table_name." (";
+        // INSERT INTO books VALUES title='The Algorithm Design Manual' , description='Cool book dude!' 
+
+        
+     
+        $prefix = '';
+        $n = sizeof($col_val_pairs) - 1;
+        $i = 0;
+        while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
-            return '';
+            $query .= " ".$prefix.$key;
+            if($i != $n)
+            {
+                $i++;
+                $query .= ",";
+            }
+
         }
+        $query .= " ) VALUES (";
 
         reset($col_val_pairs);
-        $query ="INSERT INTO ".$this->table_name." VALUES ";
-        $prefix = '';
-        while (list($key, $val) = each($col_val_pairs)) 
+        $i = 0;
+        while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
-            $query .= $prefix.$key."='".$val."' ";
-            $prefix=', ';
+            $query .= " '".$val."'";
+            if($i != $n)
+            {
+                $i++;
+                $query .= ",";
+            }
+
         }
-        $query .= $this->query;
+        $query .= " )";
         $this->resetProperties();
         return $query;
     }

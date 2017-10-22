@@ -27,9 +27,29 @@ class Model extends Database
         $this->checkTableExist($this->table_name);
     }
 
+    public function save() // returns boolean
+    {
+        return $this->insert($this->getChildProps());
+    }
+
     public function getChildProps()
     {
-        return get_object_vars($this->child_class);
+        $class_name = get_class($this->child_class);
+        $class_vars = get_class_vars($class_name);
+        $object_vars  = get_object_vars($this->child_class);
+        $child_props = [];
+        $n = sizeof($class_vars) - 3; // minus 3 from the properties in this model
+        $i = 0;
+        foreach ($class_vars as $property_name => $value) 
+        {
+            echo "$property_name : $value\n";
+            $child_props[$property_name] = $object_vars[$property_name];
+            $i++;
+            if($i == 2)
+                break;
+        }
+        
+        return $child_props;
     }
 
     public function all() 
