@@ -13,3 +13,24 @@
     min-height: 200px;
     width: 300px;
 }
+
+/* DOCUMENTATION PAGE STYLES */
+.codesnippet-elegant-model-conventions {
+    height:12em;
+}
+
+.codesnippet-table-names {
+    height:17em;
+}
+
+.codesnippet-working-with-data {
+    height:15em;
+}
+
+.codesnippet-inserts {
+    height:16em;
+}
+
+.codesnippet-updates {
+    height:16em;
+}
