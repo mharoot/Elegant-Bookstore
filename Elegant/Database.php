@@ -93,6 +93,14 @@ class Database {
 		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function resultsetObject($className, $constructorArguments = NULL)
+	{
+		$this->execute();
+		$this->stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, $className, $constructorArguments);
+		return $this->stmt->fetchAll();
+
+	}
+
     /*
     use if returning only 1 row returned as an associative array
     */

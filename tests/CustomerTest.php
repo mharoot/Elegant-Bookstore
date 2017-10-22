@@ -65,7 +65,7 @@ class CustomerTest extends TestCase
     public function test_orm_properties_of_an_instance_of_customer_model_all()
     {
         $customers = new Customer();
-        $result = $customers->ORMall();
+        $result = $customers->all();
         foreach ($result as $customer) {
             echo $customer->id . PHP_EOL;
             echo $customer->name . PHP_EOL;
