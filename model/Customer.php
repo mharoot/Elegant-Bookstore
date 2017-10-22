@@ -19,22 +19,29 @@ class Customer extends Model {
 
 	}
 
-	public function create($name, $address)
+	public function create($id = NULL, $name, $address)
 	{
 		$this->name = $name;
 		$this->address = $address;
+		if ($id !== NULL)
+			$this->id = $id;
+
 		return $this->save();
 	}
 
-	public function update($name, $address)
+	public function updateById($id,$name, $address)
 	{
 		$this->name = $name;
 		$this->address = $address;
-		return $this->where('id', '=', '5')->save();
-
+		return $this->where('id', '=', 5)->save();
 	}
 
-	
+	public function removeById($id)
+	{
+		return $this->where('id', '=', $id)->delete();
+	}
+
+
 
 	
 }

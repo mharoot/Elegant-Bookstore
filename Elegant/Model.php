@@ -172,7 +172,9 @@ class Model extends Database
         
         $q = $this->queryBuilder->get($cols);
         $this->query($q);
-        return $this->resultset();
+        $class_name = get_class($this->child_class);
+        $results = $this->resultsetObject($class_name);
+        return $results;
     }
 
 
