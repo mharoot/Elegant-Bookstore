@@ -67,7 +67,35 @@ class Model extends Database
         
         $q = $this->queryBuilder->all();
         $this->query($q);
-        return $this->resultset();
+        $results = $this->resultset();
+
+        return $results;
+    }
+
+    public function ORMall() 
+    {
+        // check if this table exists
+        
+        $q = $this->queryBuilder->all();
+        $this->query($q);
+        $results = $this->resultset();
+        
+        $child_array = [];
+        $n = sizeof($results);
+        for ($i = 0; $i < $n; $i++)
+        {
+            $row = $results[$i];
+            $temp_child_class = clone $this->child_class;
+            foreach( $row as $col => $value)
+            {
+                $temp_child_class->{$col} = $value;
+            }
+            $child_array[$i] = $temp_child_class;
+        }
+        var_dump($child_array[0]->name);
+
+
+        return $child_array;
     }
 
     public function delete()
