@@ -16,14 +16,14 @@
 
 
 <?php 
-	echo '<h4> Author '. $books_by_author[0]['author_name']. '</h4>';
+	echo '<h4> Author '. $books_by_author[0]->author_name. '</h4>';
 ?>
 	<ul>
 <?php	
 	foreach ($books_by_author as $book_by_author ) 
 	{ 
 ?>
-		<li> <?php echo '<a href="index.php?book='.$book_by_author['title'].'">'.$book_by_author['title'].'</a>'; ?> </li>
+		<li> <?php echo '<a href="index.php?book='.$book_by_author->title.'">'.$book_by_author->title.'</a>'; ?> </li>
 <?php 
 	}
 ?>
