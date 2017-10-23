@@ -48,6 +48,19 @@
 <h4>Retrieving All Rows From A Table</h4>
 <p>You may use the <code class="language-php">all</code> method in order to request all rows and all columns within a <code class="language-php">Model</code>'s database table. The <code class="language-php">all</code> method in <code class="language-php">QueryBuilder</code> returns a proper query string for the <code class="language-php">Model</code> to execute the query.
 
+
+<div class="call-to-action-wrapper codesnippet-selects">
+<div class="code-window animate fade-in codesnippet-selects">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>    
+</div>
+</div>
+</div>
+
+
+
+
 <!-- END OF Retrieving Results -->
 
 
