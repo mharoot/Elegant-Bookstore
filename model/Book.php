@@ -65,6 +65,11 @@ class Book extends Model {
 	{
 		return $result = $this->oneToOne('genres','genre_id','id')->manyToMany('authors', 'books_authors','book_id','author_id')->where('title', '=', $title)->get();   
 	}
+
+	public function genre()
+	{
+		return $result = $this->oneToOne('genres','genre_id','id')->get();   
+	}
 	
 	
 }

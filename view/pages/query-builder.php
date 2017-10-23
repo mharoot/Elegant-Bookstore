@@ -25,9 +25,6 @@
             <li><a href="#or-statements">Or Statements</a></li>
         </ul>
     </li>
-    <li><a href="#inserts">Inserts</a></li>
-    <li><a href="#updates">Updates</a></li>
-    <li><a href="#deletes">Deletes</a></li>
 </ul>
 
 
@@ -81,13 +78,93 @@
 
 <p><a name="many-to-many"></a></p>
 <h4>Many To Many</h4>
+<p>Many-to-many relations are slightly more complicated than <code class=" language-php">oneToOne</code> and <code class=" language-php">oneToMany</code> relationships. An example of such a relationship is a book with many authors, where the authors are also shared by other books. For example, many books may have the author of "Stephen King". To define this relationship, three database tables are needed: <code class=" language-php">books</code>, <code class=" language-php">authors</code>, and <code class=" language-php">author_book</code>. The <code class=" language-php">author_book</code> table is derived from the alphabetical order of the related model names, and contains the <code class=" language-php">book_id</code> and <code class=" language-php">author_id</code> columns.</p>
+
+
+<div class="call-to-action-wrapper codesnippet-many-to-many">
+<div class="code-window animate fade-in codesnippet-many-to-many">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getBooksAuthors</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$foreign_table_name</span>        <span class="token operator">=</span> <span class="token string">'authors'</span><span class="token punctuation">;</span>
+        <span class="token variable">$foreign_table_primary_key</span> <span class="token operator">=</span> <span class="token string">'author_id'</span><span class="token punctuation">;</span>
+        <span class="token variable">$junction_table_name</span>       <span class="token operator">=</span> <span class="token string">'books_authors'</span><span class="token punctuation">;</span>
+        <span class="token variable">$primary_table_name</span>        <span class="token operator">=</span> <span class="token string">'books'</span><span class="token punctuation">;</span>
+        <span class="token variable">$primary_table_primary_key</span> <span class="token operator">=</span> <span class="token string">'book_id'</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">manyToMany</span><span class="token punctuation">(</span> <span class="token variable">$foreign_table_name</span><span class="token punctuation">,</span> <span class="token variable">$junction_table_name</span><span class="token punctuation">,</span> 
+                            <span class="token variable">$foreign_table_primary_key</span><span class="token punctuation">,</span> <span class="token variable">$foreign_table_primary_key</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+</div>
+</div>
+</div>
+
 
 <p><a name="one-to-many"></a></p>
 <h4>One To Many</h4>
+<p>A "one-to-many" relationship is used to define relationships where a single model owns any amount of other models. For example, a customer may have placed many orders. Like all other Elegant relationships, one-to-many relationships are defined by placing a function on your Elegant model:</p>
+<div class="call-to-action-wrapper codesnippet-one-to-many">
+<div class="code-window animate fade-in codesnippet-one-to-many">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getOrders</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$foreign_table</span> <span class="token operator">=</span> <span class="token string">'orders'</span><span class="token punctuation">;</span>
+            <span class="token variable">$primary_key</span>   <span class="token operator">=</span> <span class="token string">'id'</span><span class="token punctuation">;</span>
+            <span class="token variable">$foreign_key</span>   <span class="token operator">=</span> <span class="token string">'customer_id'</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/**
+             *  Get the orders associated with the customer.
+             */</span>
+            <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToMany</span><span class="token punctuation">(</span><span class="token variable">$foreign_table</span><span class="token punctuation">,</span> <span class="token variable">$primary_key</span><span class="token punctuation">,</span> <span class="token variable">$foreign_key</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+</div>
+</div>
+</div>
+
 
 <p><a name="one-to-one"></a></p>
 <h4>One To One</h4>
+<p>A one-to-one relationship is a very basic relation. For example, a <code class=" language-php">Book</code> model might be associated with one <code class=" language-php">Genre</code>. To define this relationship, we place a <code class=" language-php">genre</code> method on the <code class=" language-php">Book</code> model. The <code class=" language-php">genre</code> method should call the <code class=" language-php">oneToOne</code> method and return its result:</p>
+<div class="call-to-action-wrapper codesnippet-one-to-one">
+<div class="code-window animate fade-in codesnippet-one-to-one">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php" style="top: 0px;"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
 
+	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">genre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/**
+             * Get the genre associated with the book.
+             */</span>
+            <span class="token keyword">return</span> <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToOne</span><span class="token punctuation">(</span><span class="token string">'genres'</span><span class="token punctuation">,</span><span class="token string">'genre_id'</span><span class="token punctuation">,</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></code></pre>
+</div>
+</div>
+</div>
 <!-- END OF RELATIONS -->
 
 
@@ -106,32 +183,3 @@
 <p>You may chain where constraints together as well as add <code class=" language-php"><span class="token keyword">or</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
 
 <!-- END OF WHERE CLAUSES -->
-
-
-
-
-<!-- INSERTS -->
-
-<!-- END OF INSERTS -->
-
-
-
-
-
-<!-- UPDATES -->
-<p><a name="updates"></a></p>
-<h2><a href="#updates">Updates</a></h2>
-<p>Of course, in addition to inserting records into the database, the query builder can also update existing records using the <code class=" language-php">update</code> method. The <code class=" language-php">update</code> method, like the <code class=" language-php">insert</code> method, accepts an array of column and value pairs containing the columns to be updated. You may constrain the <code class=" language-php">update</code> query using <code class=" language-php">where</code> clauses:</p>
-
-<!-- END OF UPDATES -->
-
-
-
-
-
-<!-- DELETES -->
-<p><a name="deletes"></a></p>
-<h2><a href="#deletes">Deletes</a></h2>
-<p>The query builder may also be used to delete records from the table via the <code class=" language-php">delete</code> method. You may constrain <code class=" language-php">delete</code> statements by adding <code class=" language-php">where</code> clauses before calling the <code class=" language-php">delete</code> method:</p>
-
-<!-- END OF DELETES -->

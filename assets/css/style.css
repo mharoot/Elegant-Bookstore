@@ -42,3 +42,15 @@
 .codesnippet-selects {
     height:3em;
 }
+
+.codesnippet-one-to-one {
+    height:17em;
+}
+
+.codesnippet-one-to-many {
+    height:19em;
+}
+
+.codesnippet-many-to-many {
+    height:21em;
+}
