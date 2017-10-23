@@ -251,7 +251,7 @@ Since Elegant models are query builders, you should review all of the methods av
 <!-- Deletes -->
 <p><a name="deletes"></a></p>
 <h2><a href="#deletes">Deletes</a></h2>
-<p>To delete a model, call the <code class=" language-php">delete</code> method on a model instance:</p>
+<p>To delete a model, specify by chaing a call to the method <code>where</code> with a call to the <code class=" language-php">delete</code> method on a model instance:</p>
 
 
 <div class="call-to-action-wrapper codesnippet-deletes">
@@ -259,7 +259,8 @@ Since Elegant models are query builders, you should review all of the methods av
 <div class="code-editor CodeFlask">
 <pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> 
+<span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
         <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
