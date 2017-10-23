@@ -44,7 +44,6 @@ class Model extends Database
         if (!$this->queryBuilder->hasWhereClause) {
             $result = $this->insert($this->getChildProps());
         } else {
-            file_put_contents("testing-save.txt", "update is being executed");
             $result = $this->update($this->getChildProps());
         }
         return $result;
@@ -55,7 +54,6 @@ class Model extends Database
         $class_name = get_class($this->child_class);
         $class_vars = get_class_vars($class_name);
         $object_vars  = get_object_vars($this->child_class);
-        var_dump($object_vars);
         $child_props = [];
         foreach ($this->child_class_cols as $index => $property_name) 
         {

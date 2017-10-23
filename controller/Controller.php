@@ -170,7 +170,9 @@ class Controller {
 
                 if(isset($_POST['book_description']))
                 {
-                    $this->book_model->where('title','=',$_GET['book'])->update(['description'=>$_POST['book_description']]);
+                    //$this->book_model->where('title','=',$_GET['book'])->update(['description'=>$_POST['book_description']]);//no longer works update is private
+                    $this->book_model->description = $_POST['book_description'];
+                    $this->book_model->where('title','=',$_GET['book'])->save();
                 }
                 $book = $this->book_model->getBook($_GET['book']);
                 include 'view/templates/header.php';

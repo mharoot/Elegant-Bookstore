@@ -47,7 +47,6 @@ class QueryBuilder
         $query ="DELETE FROM ".$this->table_name;
  
         $query .= $this->query;
-        file_put_contents('test.txt', $query);
         $this->resetProperties();
         return $query;
     }
@@ -70,7 +69,6 @@ class QueryBuilder
         }
         $query .= $this->query;
         $this->resetProperties();
-        file_put_contents("update-test.txt", $query);
         return $query;
     }
 
@@ -218,7 +216,6 @@ INSERT INTO table_name ( field1, field2,...fieldN )
         // void function will be part of query building
 
         $this->query = $this->table_name." JOIN ".$table_name." ON ".$this->table_name.".".$primary_key."=".$table_name.".".$foreign_key;
-        file_put_contents("test.txt", $this->query);
         return $this;
         
     }
