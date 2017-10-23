@@ -176,10 +176,76 @@
 
 <p><a name="simple-where-clauses"></a></p>
 <h4>Simple Where Clauses</h4>
+<p>You may use the <code class=" language-php">where</code> method on a query builder instance to add <code class=" language-php">where</code> clauses to the query. The most basic call to <code class=" language-php">where</code> requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. Finally, the third argument is the value to evaluate against the column.</p>
+
+
+<div class="call-to-action-wrapper codesnippet-simple-where-clause">
+<div class="code-window animate fade-in codesnippet-simple-where-clause">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">table_name</span> <span class="token operator">=</span> <span class="token string">'books'</span><span class="token punctuation">;</span>
+        <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getBook</span><span class="token punctuation">(</span><span class="token variable">$title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token variable">$title</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre>
+</div>
+</div>
+</div>
+
+<p><a name="and-statements"></a></p>
+<h4>And Statements</h4>
+<p>You may chain <code>where</code> constraints together with one or more calls to <code>where</code> in order to add <code class=" language-php"><span class="token keyword">OR</span></code> clauses to the query:</p>
+
+<div class="call-to-action-wrapper codesnippet-and-statements">
+<div class="code-window animate fade-in codesnippet-and-statements">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$order_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'customer_id'</span><span class="token punctuation">,</span><span class="token string">'='</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&lt;'</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ *  This is similar to the sql query:
+ *      SELECT * FROM orders WHERE customer_id = 1 AND amount &gt; 100 AND amount &lt; 400;
+ */</span>
+</code></pre>
+</div>
+</div>
+</div>
+
 
 
 <p><a name="or-statements"></a></p>
 <h4>Or Statements</h4>
-<p>You may chain where constraints together as well as add <code class=" language-php"><span class="token keyword">or</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
+<p>You may chain <code>where</code> constraints together with one or more calls to <code>orWhere</code> in order to add <code class=" language-php"><span class="token keyword">AND</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
+
+
+<div class="call-to-action-wrapper codesnippet-or-statements">
+<div class="code-window animate fade-in codesnippet-or-statements">
+<div class="code-editor CodeFlask">
+<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$order_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'customer_id'</span><span class="token punctuation">,</span><span class="token string">'='</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ *  This is similar to the sql query:
+ *      SELECT * FROM orders WHERE customer_id = 1 OR amount = 125 OR amount &gt; 400;
+ */</span>
+</code></pre>
+</div>
+</div>
+</div>
+
+
 
 <!-- END OF WHERE CLAUSES -->
