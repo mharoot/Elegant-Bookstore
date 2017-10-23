@@ -22,6 +22,7 @@
         <a href="#where-clauses">Where Clauses</a>
         <ul>
             <li><a href="#simple-where-clauses">Simple Where Clauses</a></li>
+            <li><a href="#and-statements">And Statements</a></li>
             <li><a href="#or-statements">Or Statements</a></li>
         </ul>
     </li>
