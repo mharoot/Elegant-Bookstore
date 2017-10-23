@@ -16,7 +16,7 @@
         </ul>
     </li>
     <li>
-        <a href="inserting-and-updating-models">Inserting &amp; Updating Models</a>
+        <a href="#inserting-and-updating-models">Inserting &amp; Updating Models</a>
         <ul>
             <li><a href="#inserts">Inserts</a></li>
             <li><a href="#updates">Updates</a></li>

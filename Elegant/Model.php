@@ -69,9 +69,7 @@ class Model extends Database
     }
 
     public function all() 
-    {
-        // check if this table exists
-        
+    {        
         $q = $this->queryBuilder->all();
         $this->query($q);
         $class_name = get_class($this->child_class);
@@ -79,6 +77,17 @@ class Model extends Database
 
         return $results;
     }
+
+    public function get($cols = NULL)
+    {
+        $q = $this->queryBuilder->get($cols);
+        $this->query($q);
+        $class_name = get_class($this->child_class);
+        $results    = $this->resultsetObject($class_name);
+
+        return $results;
+    }
+
 
 
     public function delete()
@@ -166,16 +175,6 @@ class Model extends Database
         return $this;
     }
 
-
-    public function get($cols = NULL)
-    {
-        
-        $q = $this->queryBuilder->get($cols);
-        $this->query($q);
-        $class_name = get_class($this->child_class);
-        $results = $this->resultsetObject($class_name);
-        return $results;
-    }
 
 
 

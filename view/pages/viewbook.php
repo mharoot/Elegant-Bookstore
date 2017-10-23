@@ -31,15 +31,23 @@
 	{	
 		//building the list of author(s)
 		//<a href="index.php?author=Steven S. Skiena">Steven S. Skiena</a>
-		$authors .= '<li><a href="index.php?author='.$b['author_name'].'">'.$b['author_name'].'</a> </li>';
+		$authors .= '<li><a href="index.php?author='.$b->author_name.'">'.$b->author_name.'</a> </li>';
 	}
 ?>
-	<td>      <?php echo $book[0]['title'];?> </td>
+	<td>      <?php 
+					//sugesstion put logic for when a single result has been found, database has row count for queries which returns the possible count
+					//that way i can decide to call wheter to call fetch or fetchALL
+					foreach ($book as $b ) 
+					{	
+						echo $b->title;
+					}
+				?> 
+	</td>
 	<td> <ul> <?php echo $authors; ?>    <ul> </td>
 	<td> 
-		<textarea id="book_description" name="book_description"><?php echo $book[0]['description']; ?></textarea> 
+		<textarea id="book_description" name="book_description"><?php echo $book[0]->description; ?></textarea> 
 	</td>
-	<td> <?php echo $book[0]['genre_name']; ?> </td>
+	<td> <?php echo $book[0]->genre_name; ?> </td>
 
 	</tr>
 </table>
