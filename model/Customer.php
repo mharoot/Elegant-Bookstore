@@ -41,6 +41,14 @@ class Customer extends Model {
 		return $this->where('id', '=', $id)->delete();
 	}
 
+	public function getCustomerOrders()
+	{
+	
+        $primary_key = 'id';
+        $foreign_key = 'customer_id';
+        return $this->oneToMany('orders', $primary_key, $foreign_key)->get();
+    }
+	
 
 
 	
