@@ -8,18 +8,16 @@ ALL GET, PUT, DELETE, POST calls go through here for the website
 
 include_once("model/Book.php");
 include_once("model/Author.php");
-include_once("model/Customer.php");
+
 class Controller {
     public $book_model;
     public $author_model;
-    public $customer_model;
     public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton'];
     
     public function __construct()  
    {  
        $this->book_model = new Book();
        $this->author_model = new Author();
-       $this->customer_model = new Customer();
 
    }
     
@@ -40,10 +38,8 @@ class Controller {
         {
             // no special book is requested, we'll show a list of all available books
             $books = $this->book_model->getBookList();
-            $customers = $this->customer_model->getCustomerOrders();
             include 'view/templates/header.php';
             include 'view/pages/booklist.php';
-            include 'view/pages/customerslist.php';
             include 'view/templates/footer.php';
         }
 
@@ -193,9 +189,10 @@ class Controller {
         // in booklist.php
         1. be sure form is using POST, no action required by the forms. 
         2. be sure to include the hidden field
-            <input name="_method" type="hidden" value="PUT">
+            <input name="_method" type="hidden" value="DELETE">
         3. be sure to include a delete button
             <input type="submit" value="Delete" name="deleteBookByTitleButton"/>
+            <input name="deleteBookByTitle" value="<?php echo ; ?>"/>
         ***********************************************************************/
         else if( $request_method === 'DELETE')
         {
@@ -203,7 +200,8 @@ class Controller {
             { 
 
                 $bookToRemoveTitle = $_POST['deleteBookByTitle'];
-                
+                $this->book_model->deleteByTitle($bookToRemoveTitle);
+                header("Location: http://localhost:80/Elegant-Bookstore2/");
             }
 
         }// @end DELETE
