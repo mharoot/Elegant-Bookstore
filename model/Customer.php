@@ -19,13 +19,10 @@ class Customer extends Model {
 
 	}
 
-	public function create($id = NULL, $name, $address)
-	{
+	public function create ($name, $address)
+	{ 
 		$this->name = $name;
 		$this->address = $address;
-		if ($id !== NULL)
-			$this->id = $id;
-
 		return $this->save();
 	}
 

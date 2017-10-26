@@ -79,9 +79,10 @@ class QueryBuilderTest extends TestCase
         $queryBuilder = new QueryBuilder($primary_table_name);
         $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
         $qbQuery = $queryBuilder->where($primary_key,'=','1')->update($col_val_pairs);
-        $query = "UPDATE books SET title='The Algorithm Design Manual' , description='Cool book dude!'  WHERE book_id='1'";
+        $query = "UPDATE books SET title = :title, description = :description WHERE book_id='1'";
         $this->assertEquals( $qbQuery, $query);
     }
+
 
     public function test_insert()
     {
@@ -90,8 +91,7 @@ class QueryBuilderTest extends TestCase
         $queryBuilder = new QueryBuilder($primary_table_name);
         $col_val_pairs = ['name' => 'Craig Walker', 'address' => "1641 Daily Circle, Glendale Ca, 91208"];
         $qbQuery = $queryBuilder->insert($col_val_pairs);
-        file_put_contents("test-insert.txt", $qbQuery);
-        $query = "INSERT INTO customers ( name, address ) VALUES ( 'Craig Walker', '1641 Daily Circle, Glendale Ca, 91208' )";
+        $query = "INSERT INTO customers ( name, address ) VALUES ( :name, :address )";
         $this->assertEquals( $qbQuery, $query);
     }
 

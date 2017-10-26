@@ -99,47 +99,53 @@ class CustomerTest extends TestCase
     //     $this->assertTrue(TRUE);
     // }
 
-    public function test_orm_delete()
-    {
-        $customer = new Customer();
-        $this->assertTrue( $customer->removeById(5));
 
-    }
-    public function test_orm_create() {
+
+
+
+
+    // public function test_orm_delete()
+    // {
+    //     $customer = new Customer();
+    //     $this->assertTrue( $customer->removeById(4));
+
+   // }
+    
+   public function test_orm_create() {
         $customer = new Customer();
-        $this->assertTrue($customer->create(5 ,"Michael Harootoonyan", "106 North St. Los Angeles Ca, 91006"));
+        $this->assertTrue($customer->create("Maasdsadootoonyan", "106 Norasdeles Ca, 91006"));
     }
 
     public function test_orm_updateById() {
         $customer = new Customer();
-        $this->assertTrue($customer->updateById(5,"Marvin Harootoonyan", "105 North St. Los Angeles Ca, 91006"));
+        $this->assertTrue($customer->updateById(7,"achaesaddl Haroanyan", "105 North St. Los Angeles Ca, 91006"));
     }
 
 
-    public function test_orm_where_get_w_params() 
-    {
-        $customer = new Customer();
-        $results = $customer->where('id', '=', 5)->get(array('name', 'address'));
-        $this->assertEquals($results[0]->name, 'Marvin Harootoonyan');
+    // public function test_orm_where_get_w_params() 
+    // {
+    //     $customer = new Customer();
+    //     $results = $customer->where('id', '=', 4)->get(array('name', 'address'));
+    //     $this->assertEquals($results[0]->name, 'Marvin Harootoonyan');
 
-    }
+    // }
 
-    public function test_orm_where_get() 
-    {
-        $customer = new Customer();
-        $results = $customer->where('id', '=', '5')->get();
-        $this->assertEquals($results[0]->id, 5);
+    // public function test_orm_where_get() 
+    // {
+    //     $customer = new Customer();
+    //     $results = $customer->where('id', '=', '4')->get();
+    //     $this->assertEquals($results[0]->id, 4);
 
-    }
+    // }
 
 
-    public function test_orm_all() 
-    {
-        $customer = new Customer();
-        $results = $customer->all();
-        $this->assertEquals($results[0]->id, 1);
+    // public function test_orm_all() 
+    // {
+    //     $customer = new Customer();
+    //     $results = $customer->all();
+    //     $this->assertEquals($results[0]->id, 1);
 
-    }
+    // }
 
 
     

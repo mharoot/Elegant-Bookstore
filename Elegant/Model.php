@@ -110,7 +110,37 @@ class Model extends Database
              //redirect('error404.php');
             return false;
         }
+        /*
+        
+        to do:
+        1. update query builder insert
+        2. update query builder update
+        3. update model insert  (do binding in here)
+        4. update model update  (do binding in here)
+        
+        UPDATE users SET user_password_hash = :user_password_hash WHERE user_id = :user_id
+
+
+        $query_update->bind(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
+        $query_update->bind(':user_id', $result_row->user_id, PDO::PARAM_INT);
+        
+
+        'INSERT INTO users (user_type, first_name, last_name) VALUES (:user_type, :first_name, :last_name)'
+        
+        
+        $query_update->execute();
+        */
+
+        //prepare the query before binding
         $this->query($q);
+        reset($col_val_pairs);
+        //PDO security of update
+        while ( list( $key, $val ) = each( $col_val_pairs ) ) 
+        {
+            $this->bind(':'.$key, $val);
+        }
+        
+
         return $this->execute();
     }
 
@@ -123,7 +153,17 @@ class Model extends Database
              //redirect('error404.php');
             return false;
         }
+
+        //prepare the query before binding
         $this->query($q);
+        reset($col_val_pairs);
+        //PDO security of insert
+        while ( list( $key, $val ) = each( $col_val_pairs ) ) 
+        {
+            $this->bind(':'.$key, $val);
+        }
+                
+       
         return $this->execute();
     }
 

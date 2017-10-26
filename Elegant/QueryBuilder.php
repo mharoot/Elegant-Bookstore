@@ -58,15 +58,42 @@ class QueryBuilder
             return '';
         }
 
+        /*
+        $query_update = $this->prepare('');
+        
+        to do:
+        1. update query builder insert
+        2. update query builder update
+        3. update model insert  (do binding in here)
+        4. update model update  (do binding in here)
+        
+        UPDATE users SET user_password_hash = :user_password_hash WHERE user_id = :user_id
 
+
+        $query_update->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
+        $query_update->bindValue(':user_id', $result_row->user_id, PDO::PARAM_INT);
+        
+        
+        
+        $query_update->execute();
+        */
         reset($col_val_pairs);
-        $query ="UPDATE ".$this->table_name." SET ";
+        $query ="UPDATE ".$this->table_name." SET"; // "UPDATE books SET"
         $prefix = '';
-        while (list($key, $val) = each($col_val_pairs)) 
+        $n = sizeof($col_val_pairs) - 1;
+        $i = 0;
+        while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
-            $query .= $prefix.$key."='".$val."' ";
-            $prefix=', ';
+            $query .= " ".$prefix.$key." = ".":".$prefix.$key; // "UPDATE books SET title = :title
+            if($i != $n)
+            {
+                $i++;
+                $query .= ","; // "UPDATE books SET title = :title, description = :description"
+            }
+
         }
+        reset($col_val_pairs);
+        $i = 0;
         $query .= $this->query;
         $this->resetProperties();
         return $query;
@@ -76,15 +103,10 @@ class QueryBuilder
     {
 
         /*
-INSERT INTO table_name ( field1, field2,...fieldN )
-   VALUES
-   ( value1, value2,...valueN );
-
+            INSERT INTO table_name ( field1, field2,...fieldN ) VALUES ( value1, value2,...valueN );
         */
         reset($col_val_pairs);
         $query ="INSERT INTO ".$this->table_name." (";
-        // INSERT INTO books VALUES title='The Algorithm Design Manual' , description='Cool book dude!' 
-
         
      
         $prefix = '';
@@ -101,12 +123,13 @@ INSERT INTO table_name ( field1, field2,...fieldN )
 
         }
         $query .= " ) VALUES (";
+       
 
         reset($col_val_pairs);
         $i = 0;
         while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
-            $query .= " '".$val."'";
+            $query .= " :".$key;  // 'INSERT INTO users (user_type, first_name, last_name) VALUES (:user_type, :first_name, :last_name)'
             if($i != $n)
             {
                 $i++;
