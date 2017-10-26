@@ -201,7 +201,9 @@ class Controller {
 
                 $bookToRemoveTitle = $_POST['deleteBookByTitle'];
                 $this->book_model->deleteByTitle($bookToRemoveTitle);
-                header("Location: http://localhost:80/Elegant-Bookstore2/");
+                //$_SERVER['SERVER_PORT']
+                header("Location: ".$this->base_url());
+               
             }
 
         }// @end DELETE
@@ -212,6 +214,11 @@ class Controller {
 
 
     } // @end putAndDeleteRequestHandler()
+
+    private function base_url()
+    {
+        return 'http://'.$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
+    }
 }
 
 ?>
