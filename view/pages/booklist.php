@@ -41,7 +41,7 @@ ini_set('display_errors',1);
 			$row .= "</td><td>".$book[0]['description']."</td><td><form method='post' >
 			<input type='hidden' name='_method' value='DELETE'>
 			<input type='hidden' name='deleteBookByTitle' value='" . $book[0]['title'] . "'>
-		   <input type='submit' value='Delete' name='deleteBookByTitleButton' />
+		   <input class='btn btn-danger' type='submit' value='Delete' name='deleteBookByTitleButton' />
 		   </form>
 		   </td></tr>";
 			echo $row;

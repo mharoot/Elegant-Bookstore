@@ -12,7 +12,7 @@ include_once("model/Author.php");
 class Controller {
     public $book_model;
     public $author_model;
-    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton'];
+    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks'];
     
     public function __construct()  
    {  
@@ -95,6 +95,7 @@ class Controller {
                 include 'view/templates/footer.php';
             }
 
+
         }
     }
 
@@ -102,6 +103,17 @@ class Controller {
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
+
+            if (isset($_POST['resetBooks']))
+            {
+                include_once('Elegant/Database.php');
+                $db_handler = new Database();
+                $q = file_get_contents('sql/resetBooks.sql');
+                $db_handler->query($q);
+                $db_handler->execute();
+                $this->redirect();
+
+            }
 
             $this->putAndDeleteRequestHandler();         
         }
@@ -202,7 +214,7 @@ class Controller {
                 $bookToRemoveTitle = $_POST['deleteBookByTitle'];
                 $this->book_model->deleteByTitle($bookToRemoveTitle);
                 //$_SERVER['SERVER_PORT']
-                header("Location: ".$this->base_url());
+                $this->redirect();
                
             }
 
@@ -214,6 +226,14 @@ class Controller {
 
 
     } // @end putAndDeleteRequestHandler()
+
+    private function redirect() 
+    {
+        ob_start();
+        header('Location: '.$this->base_url());
+        ob_end_flush();
+        die();
+    }
 
     private function base_url()
     {
