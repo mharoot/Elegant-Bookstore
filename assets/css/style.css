@@ -71,6 +71,27 @@
         height:3em;
 }
 
+#navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    z-index: 10;/* https://stackoverflow.com/questions/34106499/how-can-i-stop-a-div-that-is-scrolling-over-the-navbar */
+}
+
+#buttons {
+    /* https://stackoverflow.com/questions/34106499/how-can-i-stop-a-div-that-is-scrolling-over-the-navbar */
+    z-index: 10;   
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: white;    
+    text-align: center;
+}
 /* For an unknown amount of children you could use. */
 
 #buttons > * {
@@ -82,7 +103,18 @@
     margin-top: 0px;
 }
 
+html, body::-webkit-scrollbar  {
+    overflow-y:auto;
+    margin-top: 0px;
+    height:100%;
+  }
+
+#element::-webkit-scrollbar { 
+    display: none; 
+}
 /* #buttons > *:nth-child(3):first-child {
     display: block;
     margin-top: 1em;
 } */
+
+
