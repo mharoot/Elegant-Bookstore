@@ -112,9 +112,10 @@ html, body::-webkit-scrollbar  {
 #element::-webkit-scrollbar { 
     display: none; 
 }
-/* #buttons > *:nth-child(3):first-child {
-    display: block;
-    margin-top: 1em;
-} */
 
+
+#footer-padding-top {
+    min-height: 150px;
+    width:100%;
+}
 

@@ -1,3 +1,4 @@
+<div id="footer-padding-top"></div>
 <div id="buttons">
     <a class="btn btn-primary" href=".">Get Booklist</a>
     <a class="btn btn-primary" href='./?customerslist'>Get Customers' Orders List</a>

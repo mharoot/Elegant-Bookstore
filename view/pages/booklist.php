@@ -3,11 +3,12 @@ ini_set('display_errors',1);
  error_reporting(E_ALL); 
 
  ?>
- <div class="jumbotron">
 
+<div class="jumbotron">
 <h2> Elegant ORM - Many to Many Relations</h2>
 <p> A book can have many authors, and an author can write many books.</p>
 <p> The Elegant ORM code snippet required for these results: </p> 
+</div>
 
 <div style="height: 5em;" class="call-to-action-wrapper">
 <div style="height: 5em;" class="code-window animate fade-in">
@@ -20,34 +21,48 @@ ini_set('display_errors',1);
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
 
-<table id="booklist" class="table table-hover table-striped">
-	<thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Description</th>
-      </tr>
+<table class="table table-hover table-striped">
+	<thead class="thead-inverse">
+		<tr>
+			<th class="text-center">Title</th>
+			<th class="text-center">Author</th>
+			<th class="text-center">Description</th>
+        </tr>
     </thead>
-	<?php 
+<?php 
 
-		foreach ($books as $book)
-		{
-			$row = '<tr><td><a href="index.php?book='.$book[0]['title'].'">'.$book[0]['title'].'</a></td><td>';
-			
-			foreach ($book[0]['authors'] as $author) {
-				$row .= '<a href="index.php?author='.$author.'">'.$author.'</a></br>';
-			}
-
-			$row .= "</td><td>".$book[0]['description']."</td><td><form method='post' >
-			<input type='hidden' name='_method' value='DELETE'>
-			<input type='hidden' name='deleteBookByTitle' value='" . $book[0]['title'] . "'>
-		   <input class='btn btn-danger' type='submit' value='Delete' name='deleteBookByTitleButton' />
-		   </form>
-		   </td></tr>";
-			echo $row;
-			
-		}
-
-	?>
+foreach ($books as $book)
+{
+	$title = $book[0]['title'];
+?>
+		<tr>
+			<td>
+				<a href="./?book=<?php echo $title; ?>"><?php echo $title; ?></a>
+			</td>
+			<td>
+				<ul>
+<?php
+	// building the list of authors in the authors column
+	$authors_col = '';
+	foreach ($book[0]['authors'] as $author) {
+		$authors_col .= '<li><a href="index.php?author='.$author.'">'.$author.'</a></li>';
+	}
+	echo $authors_col;
+?>
+				</ul>
+			</td>
+			<td>
+				<?php echo $book[0]['description'];?>
+				</br>
+				<form method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="deleteBookByTitle" value="<?php echo $title;?>">
+					<input class="btn btn-danger" type="submit" value="Delete" name="deleteBookByTitleButton" />
+				</form>
+			</td>
+		</tr>
+<?php		
+} //end of for each books as book
+?>
+	
 </table>
-</div>
