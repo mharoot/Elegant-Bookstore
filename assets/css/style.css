@@ -70,3 +70,19 @@
 .customer-list-codesnippet-oneToMany {
         height:3em;
 }
+
+/* For an unknown amount of children you could use. */
+
+#buttons > * {
+    display: block;
+    margin-top: 1em;
+}
+
+#buttons > *:first-child {
+    margin-top: 0px;
+}
+
+/* #buttons > *:nth-child(3):first-child {
+    display: block;
+    margin-top: 1em;
+} */
