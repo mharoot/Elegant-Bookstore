@@ -11,9 +11,9 @@ ini_set('display_errors',1);
 
 <div style="height: 5em;" class="call-to-action-wrapper">
 <div style="height: 5em;" class="code-window animate fade-in">
-<div class="code-editor CodeFlask customer-list-codesnippet-oneToMany"><div class="CodeFlask__textarea customer-list-codesnippet-oneToMany"></div><pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$primary_key</span> <span class="token operator">=</span> <span class="token string">'id'</span><span class="token punctuation">;</span>
-<span class="token variable">$foreign_key</span> <span class="token operator">=</span> <span class="token string">'customer_id'</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToMany</span><span class="token punctuation">(</span><span class="token string">'orders'</span><span class="token punctuation">,</span> <span class="token variable">$primary_key</span><span class="token punctuation">,</span> <span class="token variable">$foreign_key</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="code-editor CodeFlask customer-list-codesnippet-oneToMany"><div class="CodeFlask__textarea customer-list-codesnippet-oneToMany"></div><pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$customers_pk</span> <span class="token operator">=</span> <span class="token string">'id'</span><span class="token punctuation">;</span>
+<span class="token variable">$fk1</span> <span class="token operator">=</span> <span class="token string">'customer_id'</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToMany</span><span class="token punctuation">(</span><span class="token string">'orders'</span><span class="token punctuation">,</span> <span class="token variable">$customers_pk</span><span class="token punctuation">,</span> <span class="token variable">$fk1</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
 </div>
 </div>
@@ -21,6 +21,8 @@ ini_set('display_errors',1);
 </br>
 
 <img class="relationsImage" src="assets/images/OneToMany.png"></img>
+</br>
+<h3> Customers Orders </h3>
 
 <table id="booklist" class="table table-hover table-striped">
 	<thead>

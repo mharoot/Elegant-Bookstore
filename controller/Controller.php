@@ -8,11 +8,12 @@ ALL GET, PUT, DELETE, POST calls go through here for the website
 
 include_once("model/Book.php");
 include_once("model/Author.php");
+include_once("model/Customer.php");
 
 class Controller {
     public $book_model;
     public $author_model;
-    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks'];
+    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist'];
     
     public function __construct()  
    {  
@@ -62,6 +63,19 @@ class Controller {
                 $book = $this->book_model->getBook($_GET['book']);
                 include 'view/templates/header.php';
                 include 'view/pages/viewbook.php';
+                include 'view/templates/footer.php';
+            }
+
+            if (isset($_GET['customerslist']))
+            {
+                $foreign_table  = 'orders';
+                $pk             = 'id'; //customers table id
+                $fk             = 'customer_id';
+                $customer_model = new Customer();
+                $customers = $customer_model->oneToMany($foreign_table, $pk , $fk)->get();
+
+                include 'view/templates/header.php';
+                include 'view/pages/customerslist.php';
                 include 'view/templates/footer.php';
             }
 
