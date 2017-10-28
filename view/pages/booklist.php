@@ -36,7 +36,7 @@ foreach ($books as $book)
 ?>
 		<tr>
 			<td>
-				<a href="./?book=<?php echo $title; ?>"><?php echo $title; ?></a>
+				<p><a href="./?book=<?php echo $title; ?>"><?php echo $title; ?></a></p>
 			</td>
 			<td>
 				<ul>
@@ -51,7 +51,7 @@ foreach ($books as $book)
 				</ul>
 			</td>
 			<td>
-				<?php echo $book[0]['description'];?>
+				<p><?php echo $book[0]['description'];?></p>
 				</br>
 				<form method="POST">
 					<input type="hidden" name="_method" value="DELETE">
