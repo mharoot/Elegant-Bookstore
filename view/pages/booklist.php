@@ -20,7 +20,7 @@ ini_set('display_errors',1);
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
 </div>
-<table class="table table-hover table-striped">
+<table style="width:100%" class="table table-hover table-striped">
 	<thead class="thead-inverse">
 		<tr>
 			<th class="text-center">Title</th>
