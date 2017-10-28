@@ -6,9 +6,8 @@ ini_set('display_errors',1);
 
 <div class="jumbotron">
 <h2> Elegant ORM - Many to Many Relations</h2>
-<p> A book can have many authors, and an author can write many books.</p>
-<p> The Elegant ORM code snippet required for these results: </p> 
-</div>
+<p> A book can have many authors, and an author can write many books.  The Elegant ORM code snippet required for these results: </p> 
+
 
 <div style="height: 5em;" class="call-to-action-wrapper">
 <div style="height: 5em;" class="code-window animate fade-in">
@@ -20,7 +19,7 @@ ini_set('display_errors',1);
 </div>
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
-
+</div>
 <table class="table table-hover table-striped">
 	<thead class="thead-inverse">
 		<tr>
