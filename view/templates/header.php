@@ -3,8 +3,9 @@
 <head>
   <title>Elegant Bookstore</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
- 
+  <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
   <link rel="stylesheet" href="./assets/css/codeflaskstyle.css">
   <link rel="stylesheet" href="./assets/css/codeflask.css">
   <link rel="stylesheet" href="./assets/css/prism.css">
@@ -48,10 +49,10 @@
     </ul>
   </div>
 </nav>
-<!-- </br>
 </br>
 </br>
-</br> -->
+</br>
+</br>
 
 <!-- <div class="container-fluid">
 <div class="row"> -->

@@ -9,14 +9,9 @@ ini_set('display_errors',1);
 <p> A book can have many authors, and an author can write many books.  The Elegant ORM code snippet required for these results: </p> 
 
 
-<div style="height: 5em;" class="call-to-action-wrapper">
-<div style="height: 5em;" class="code-window animate fade-in">
-    <div class="code-editor CodeFlask"><div class="CodeFlask__textarea"></div><pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">        $cols</span>  <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span>
-	<span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">manyToMany</span><span class="token punctuation">(</span><span class="token string">'authors'</span><span class="token punctuation">,</span><span class="token string">'books_authors'</span><span class="token punctuation">,</span><span class="token string">'book_id'</span><span class="token punctuation">,</span><span class="token string">'author_id'</span><span class="token punctuation">)</span>
-	              <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$cols</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	</code></pre></div>
-</div>
-</div>
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$cols</span>  <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">manyToMany</span><span class="token punctuation">(</span><span class="token string">'authors'</span><span class="token punctuation">,</span><span class="token string">'books_authors'</span><span class="token punctuation">,</span><span class="token string">'book_id'</span><span class="token punctuation">,</span><span class="token string">'author_id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$cols</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	</code></p></pre>
 </br>
 <img class="relationsImage" src="assets/images/ManyToMany.png"></img>
 </div>

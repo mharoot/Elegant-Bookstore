@@ -111,6 +111,10 @@
     margin-top: 0px;
 }
 
+.jumbotron {
+    margin-right:0%;
+    padding-right:0%;
+}
 html,body
 {
     width: 100%;
@@ -120,9 +124,11 @@ html,body
     margin-left:5%;
     margin-right:5%;
     padding-right:5%;
+    max-width: 100%;
     overflow-x: hidden; 
     
 }
+
 
 body{
     padding-top:10%;
@@ -132,6 +138,7 @@ body{
 
 html, body::-webkit-scrollbar  {
     overflow-y:auto;
+    max-width: 100%;
   }
 
 #element::-webkit-scrollbar { 
@@ -258,15 +265,21 @@ p {
 	}
 	
 	/* Smartphones (portrait and landscape) ----------- */
-	/* @media only screen
-	and (min-device-width : 320px)
-	and (max-device-width : 480px) {
-		body { 
-			padding: 0; 
-			margin: 0; 
-			width: 320px; }
-		} */
-	
+	@media 
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+		p>code>span {
+            font-size: 14px;
+        }
+    }
+    
+    p>code>span {
+        line-height: 100%;
+    }
+    
+    .language-php {
+        background-color:#fff;
+    }
 	/* iPads (portrait and landscape) ----------- */
 	/* @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 		body { 
