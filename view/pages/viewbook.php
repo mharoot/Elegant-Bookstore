@@ -34,7 +34,8 @@
 		$authors .= '<li><a href="index.php?author='.$b->author_name.'">'.$b->author_name.'</a> </li>';
 	}
 ?>
-	<td>      <?php 
+	<td>
+		<p>      <?php 
 					//sugesstion put logic for when a single result has been found, database has row count for queries which returns the possible count
 					//that way i can decide to call wheter to call fetch or fetchALL
 					foreach ($book as $b ) 
@@ -42,12 +43,13 @@
 						echo $b->title;
 					}
 				?> 
+		</p>
 	</td>
 	<td> <ul> <?php echo $authors; ?>    <ul> </td>
 	<td> 
-		<textarea id="book_description" name="book_description"><?php echo $book[0]->description; ?></textarea> 
+		<textarea id="book_description" name="book_description"><?php echo $book[0]->description; ?></textarea>
 	</td>
-	<td> <?php echo $book[0]->genre_name; ?> </td>
+	<td> <p><?php echo $book[0]->genre_name; ?> </p></td>
 
 	</tr>
 </table>

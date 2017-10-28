@@ -24,7 +24,7 @@ ini_set('display_errors',1);
 	<thead class="thead-inverse">
 		<tr>
 			<th class="text-center">Title</th>
-			<th class="text-center">Author</th>
+			<th class="text-center">Author(s)</th>
 			<th class="text-center">Description</th>
         </tr>
     </thead>

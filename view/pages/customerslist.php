@@ -35,7 +35,7 @@ ini_set('display_errors',1);
 	<?php 
 
 		foreach ($customers as $customer) {
-			echo "<tr><td>". $customer->name . '</td> <td>'. $customer->address.'</td><td>'.$customer->amount. '</td></tr>';
+			echo "<tr><td><p>". $customer->name . '</p></td> <td><p>'. $customer->address.'</p></td> <td><p>'.$customer->amount. '</p></td></tr>';
 		}
 
 	?>

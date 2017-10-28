@@ -236,6 +236,10 @@ p {
         td>p {
             padding-top:5%;
         }
+
+        td>textarea {
+            margin-top:5%;
+        }
 		/*
 		Label the data
 		*/

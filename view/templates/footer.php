@@ -24,7 +24,7 @@ $(document).ready(function(){
     isSmallScreen = true;
       //assuming single table on a page find the table
       $table = $("tbody");
-      $thead = $("thead.thead-inverse>tr");
+      $thead = $("thead>tr");
       $tableheaders = $thead.children();
 
       $tableheaders.each( function( index ) {
