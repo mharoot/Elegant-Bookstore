@@ -117,8 +117,8 @@
 }
 html,body
 {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     margin: 0;
     padding: 0;
     margin-left:5%;
@@ -269,7 +269,19 @@ p {
 	only screen and (max-width: 760px),
 	(min-device-width: 768px) and (max-device-width: 1024px)  {
 		p>code>span {
-            font-size: 9px;
+            font-size: 11px;
+        }
+        .language-php {
+            background-color:#fff;
+            font-family: "Operator Mono","Fira Code",Consolas,Monaco,"Andale Mono",monospace;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            direction: ltr;
+            overflow-y:hidden;
+            overflow-x: auto;
+            word-wrap: normal;
+            white-space: pre;
         }
     }
     
@@ -279,10 +291,58 @@ p {
     
     .language-php {
         background-color:#fff;
+        font-family: "Operator Mono","Fira Code",Consolas,Monaco,"Andale Mono",monospace;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        direction: ltr;
+        overflow-y:hidden;
+        overflow-x: auto;
+        word-wrap: normal;
+        white-space: pre;
     }
 	/* iPads (portrait and landscape) ----------- */
 	/* @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 		body { 
 			width: 495px; 
 		}
-	} */
+    } */
+    
+
+    .CodeFlask__textarea{
+        border:none;
+        background:transparent;
+        outline:none;
+        resize:none;
+        opacity:0.4;
+        margin:0;
+        z-index:1;
+        height:100%;
+        /*-webkit-overflow-scrolling: touch;*/
+    }
+    
+    .CodeFlask__code{
+        font-size:inherit;
+        font-family:inherit;
+        color:inherit;
+        display:block;
+    }
+
+    @media (max-width:420px){
+        .language-php {
+            background-color:#fff;
+            font-family: "Operator Mono","Fira Code",Consolas,Monaco,"Andale Mono",monospace;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            direction: ltr;
+        }
+    }
+
+    pre {
+        overflow-x: auto;
+        overflow-y:hidden;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    
