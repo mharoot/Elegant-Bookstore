@@ -1,3 +1,4 @@
+<div style="background-color:#fff"  class="jumbotron">
 <article>
 
 <h1>Elegant Models: Built in Database Query Builder</h1>
@@ -49,14 +50,9 @@
 <p>You may use the <code class="language-php">all</code> method in order to request all rows and all columns within a <code class="language-php">Model</code>'s database table. The <code class="language-php">all</code> method in <code class="language-php">QueryBuilder</code> returns a proper query string for the <code class="language-php">Model</code> to execute the query.
 
 
-<div class="call-to-action-wrapper codesnippet-selects">
-<div class="code-window animate fade-in codesnippet-selects">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>    
-</div>
-</div>
-</div>
+
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></p></pre>    
 
 
 
@@ -72,14 +68,10 @@
 <h2><a href="#selects">Selects</a></h2>
 <h4>Specifying A Select Clause within <code>Get Parameter</code></h4>
 <p>Of course, you may not always want to select all columns from a database table. You can specify what columns you want in the <code>get()</code> method as done in the following code snippet below:</p>
-<div class="call-to-action-wrapper codesnippet-selects">
-<div class="code-window animate fade-in codesnippet-selects">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>    
-</div>
-</div>
-</div>
+
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$books</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></p></pre>    
+
 
 <!-- END OF SELECTS -->
 
@@ -95,10 +87,8 @@
 <p>Many-to-many relations are slightly more complicated than <code class=" language-php">oneToOne</code> and <code class=" language-php">oneToMany</code> relationships. An example of such a relationship is a book with many authors, where the authors are also shared by other books. For example, many books may have the author of "Stephen King". To define this relationship, three database tables are needed: <code class=" language-php">books</code>, <code class=" language-php">authors</code>, and <code class=" language-php">author_book</code>. The <code class=" language-php">author_book</code> table is derived from the alphabetical order of the related model names, and contains the <code class=" language-php">book_id</code> and <code class=" language-php">author_id</code> columns.</p>
 
 
-<div class="call-to-action-wrapper codesnippet-many-to-many">
-<div class="code-window animate fade-in codesnippet-many-to-many">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
@@ -119,19 +109,16 @@
 
 <span class="token punctuation">}</span>
 <span class="token delimiter important">?&gt;</span></span>
-</code></pre>
-</div>
-</div>
-</div>
+</code></p></pre>
+
 
 
 <p><a name="one-to-many"></a></p>
 <h4>One To Many</h4>
 <p>A "one-to-many" relationship is used to define relationships where a single model owns any amount of other models. For example, a customer may have placed many orders. Like all other Elegant relationships, one-to-many relationships are defined by placing a function on your Elegant model:</p>
-<div class="call-to-action-wrapper codesnippet-one-to-many">
-<div class="code-window animate fade-in codesnippet-one-to-many">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -149,19 +136,15 @@
         <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token delimiter important">?&gt;</span></span>
-</code></pre>
-</div>
-</div>
-</div>
+</code></p></pre>
+
 
 
 <p><a name="one-to-one"></a></p>
 <h4>One To One</h4>
 <p>A one-to-one relationship is a very basic relation. For example, a <code class=" language-php">Book</code> model might be associated with one <code class=" language-php">Genre</code>. To define this relationship, we place a <code class=" language-php">genre</code> method on the <code class=" language-php">Book</code> model. The <code class=" language-php">genre</code> method should call the <code class=" language-php">oneToOne</code> method and return its result:</p>
-<div class="call-to-action-wrapper codesnippet-one-to-one">
-<div class="code-window animate fade-in codesnippet-one-to-one">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php" style="top: 0px;"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<pre class="language-php" style="top: 0px;"><p><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -175,10 +158,8 @@
             <span class="token keyword">return</span> <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToOne</span><span class="token punctuation">(</span><span class="token string">'genres'</span><span class="token punctuation">,</span><span class="token string">'genre_id'</span><span class="token punctuation">,</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</span></code></pre>
-</div>
-</div>
-</div>
+</span></code></p></pre>
+
 <!-- END OF RELATIONS -->
 
 
@@ -193,10 +174,7 @@
 <p>You may use the <code class=" language-php">where</code> method on a query builder instance to add <code class=" language-php">where</code> clauses to the query. The most basic call to <code class=" language-php">where</code> requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. Finally, the third argument is the value to evaluate against the column.</p>
 
 
-<div class="call-to-action-wrapper codesnippet-simple-where-clause">
-<div class="code-window animate fade-in codesnippet-simple-where-clause">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
 
@@ -210,19 +188,15 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token delimiter important">?&gt;</span></span>
-</code></pre>
-</div>
-</div>
-</div>
+</code></p></pre>
+
 
 <p><a name="and-statements"></a></p>
 <h4>And Statements</h4>
 <p>You may chain <code>where</code> constraints together with one or more calls to <code>where</code> in order to add <code class=" language-php"><span class="token keyword">OR</span></code> clauses to the query:</p>
 
-<div class="call-to-action-wrapper codesnippet-and-statements">
-<div class="code-window animate fade-in codesnippet-and-statements">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$order_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'customer_id'</span><span class="token punctuation">,</span><span class="token string">'='</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&lt;'</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
@@ -231,10 +205,8 @@
  *  This is similar to the sql query:
  *      SELECT * FROM orders WHERE customer_id = 1 AND amount &gt; 100 AND amount &lt; 400;
  */</span>
-</code></pre>
-</div>
-</div>
-</div>
+</code></p></pre>
+
 
 
 
@@ -243,10 +215,7 @@
 <p>You may chain <code>where</code> constraints together with one or more calls to <code>orWhere</code> in order to add <code class=" language-php"><span class="token keyword">AND</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
 
 
-<div class="call-to-action-wrapper codesnippet-or-statements">
-<div class="code-window animate fade-in codesnippet-or-statements">
-<div class="code-editor CodeFlask">
-<pre class="CodeFlask__pre  language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$order_model</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'customer_id'</span><span class="token punctuation">,</span><span class="token string">'='</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">)</span>
             <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
@@ -255,11 +224,11 @@
  *  This is similar to the sql query:
  *      SELECT * FROM orders WHERE customer_id = 1 OR amount = 125 OR amount &gt; 400;
  */</span>
-</code></pre>
-</div>
-</div>
-</div>
+</code></p></pre>
 
 
 
 <!-- END OF WHERE CLAUSES -->
+
+
+</div>

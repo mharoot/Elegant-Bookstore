@@ -9,10 +9,10 @@ ini_set('display_errors',1);
 <p> One customer can have many orders hence to one-to-many.</p>
 <p> The Elegant ORM code snippet required for these results: </p> 
 
-<pre class="language-php"><code class="CodeFlask__code  language-php"><span class="token variable">$customers_pk</span> <span class="token operator">=</span> <span class="token string">'id'</span><span class="token punctuation">;</span>
+<pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$customers_pk</span> <span class="token operator">=</span> <span class="token string">'id'</span><span class="token punctuation">;</span>
 <span class="token variable">$fk1</span> <span class="token operator">=</span> <span class="token string">'customer_id'</span><span class="token punctuation">;</span>
 <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToMany</span><span class="token punctuation">(</span><span class="token string">'orders'</span><span class="token punctuation">,</span> <span class="token variable">$customers_pk</span><span class="token punctuation">,</span> <span class="token variable">$fk1</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+</code></p></pre>
 
 </br>
 
