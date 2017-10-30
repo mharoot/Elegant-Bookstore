@@ -35,9 +35,11 @@
 		<p>      <?php 
 					//sugesstion put logic for when a single result has been found, database has row count for queries which returns the possible count
 					//that way i can decide to call wheter to call fetch or fetchALL
+					
 					foreach ($book as $b ) 
 					{	
 						echo $b->title;
+						break;
 					}
 				?> 
 		</p>
