@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  disableScroll();
+  // disableScroll();
   isSmallScreen = false;
   // Execute on load
   checkWidth();
