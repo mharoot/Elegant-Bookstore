@@ -44,6 +44,7 @@
 	</td>
 	<td> <ul> <?php echo $authors; ?>    <ul> </td>
 	<td> 
+		</br>
 		<textarea id="book_description" name="book_description"><?php echo $book[0]->description; ?></textarea>
 	</td>
 	<td> <p><?php echo $book[0]->genre_name; ?> </p></td>
