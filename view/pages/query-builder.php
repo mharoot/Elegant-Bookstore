@@ -88,7 +88,7 @@
 
 
 
-<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
@@ -108,7 +108,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span class="token delimiter important">?&gt;</span></span>
+<span class="token delimiter important">?&gt;</span>
 </code></p></pre>
 
 
