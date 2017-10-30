@@ -118,7 +118,7 @@
 <p>A "one-to-many" relationship is used to define relationships where a single model owns any amount of other models. For example, a customer may have placed many orders. Like all other Elegant relationships, one-to-many relationships are defined by placing a function on your Elegant model:</p>
 
 
-<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -135,7 +135,7 @@
             <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">oneToMany</span><span class="token punctuation">(</span><span class="token variable">$foreign_table</span><span class="token punctuation">,</span> <span class="token variable">$primary_key</span><span class="token punctuation">,</span> <span class="token variable">$foreign_key</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token delimiter important">?&gt;</span></span>
+<span class="token delimiter important">?&gt;</span>
 </code></p></pre>
 
 
@@ -174,7 +174,7 @@
 <p>You may use the <code class=" language-php">where</code> method on a query builder instance to add <code class=" language-php">where</code> clauses to the query. The most basic call to <code class=" language-php">where</code> requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. Finally, the third argument is the value to evaluate against the column.</p>
 
 
-<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string">"Elegant/Model.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
 
@@ -187,7 +187,7 @@
         <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token variable">$title</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token delimiter important">?&gt;</span></span>
+<span class="token delimiter important">?&gt;</span>
 </code></p></pre>
 
 
