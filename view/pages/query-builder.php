@@ -193,7 +193,7 @@
 
 <p><a name="and-statements"></a></p>
 <h4>And Statements</h4>
-<p>You may chain <code>where</code> constraints together with one or more calls to <code>where</code> in order to add <code class=" language-php"><span class="token keyword">OR</span></code> clauses to the query:</p>
+<p>You may chain <code>where</code> constraints together with one or more calls to <code>where</code> in order to add <code class=" language-php"><span class="token keyword">AND</span></code> clauses to the query:</p>
 
 
 <pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -212,7 +212,7 @@
 
 <p><a name="or-statements"></a></p>
 <h4>Or Statements</h4>
-<p>You may chain <code>where</code> constraints together with one or more calls to <code>orWhere</code> in order to add <code class=" language-php"><span class="token keyword">AND</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
+<p>You may chain <code>where</code> constraints together with one or more calls to <code>orWhere</code> in order to add <code class=" language-php"><span class="token keyword">OR</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
 
 
 <pre class="language-php"><p><code class="CodeFlask__code language-php"><span class="token variable">$order_model</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

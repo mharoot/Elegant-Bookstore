@@ -39,36 +39,36 @@ $(document).ready(function(){
 
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-var keys = { 38: 1, 40: 1};
+// var keys = { 38: 1, 40: 1};
 
-function preventDefault(e) {
-  e = e || codesnippet.event;
-  if (e.preventDefault)
-      e.preventDefault();
-  e.returnValue = false;  
-}
+// function preventDefault(e) {
+//   e = e || codesnippet.event;
+//   if (e.preventDefault)
+//       e.preventDefault();
+//   e.returnValue = false;  
+// }
 
-function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
-    }
-}
+// function preventDefaultForScrollKeys(e) {
+//     if (keys[e.keyCode]) {
+//         preventDefault(e);
+//         return false;
+//     }
+// }
 
-function disableScroll() {
-  if (codesnippet.addEventListener) // older FF
-      codesnippet.addEventListener('DOMMouseScroll', preventDefault, false);
-  codesnippet.onwheel = preventDefault; // modern standard
-  codesnippet.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-  codesnippet.ontouchmove  = preventDefault; // mobile
-  document.onkeydown  = preventDefaultForScrollKeys;
-}
+// function disableScroll() {
+//   if (codesnippet.addEventListener) // older FF
+//       codesnippet.addEventListener('DOMMouseScroll', preventDefault, false);
+//   codesnippet.onwheel = preventDefault; // modern standard
+//   codesnippet.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+//   codesnippet.ontouchmove  = preventDefault; // mobile
+//   document.onkeydown  = preventDefaultForScrollKeys;
+// }
 
-function enableScroll() {
-    if (codesnippet.removeEventListener)
-        codesnippet.removeEventListener('DOMMouseScroll', preventDefault, false);
-    codesnippet.onmousewheel = document.onmousewheel = null; 
-    codesnippet.onwheel = null; 
-    codesnippet.ontouchmove = null;  
-    document.onkeydown = null;  
-}
+// function enableScroll() {
+//     if (codesnippet.removeEventListener)
+//         codesnippet.removeEventListener('DOMMouseScroll', preventDefault, false);
+//     codesnippet.onmousewheel = document.onmousewheel = null; 
+//     codesnippet.onwheel = null; 
+//     codesnippet.ontouchmove = null;  
+//     document.onkeydown = null;  
+// }
