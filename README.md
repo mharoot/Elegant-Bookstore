@@ -1,18 +1,6 @@
 # Elegant-Bookstore
-Elegant-Bookstore - Elegant is an open source ORM where the functionalities are demonstrated by the Bookstore.
+In this directory, the functionalities of Elegant are demonstrated by a series of demos based on an MVC architecture, E-commerce, Bookstore web application that inspired all the use cases in our (web developers/users) stories. It is also contains the most thorough documentation you'll ever need to start a project immediately and top level UML design of Elegant.
 
-# In this version
-- The ORMall functionality is giving expected results as a typical ORM would but it is unnecessarily slow.
-- The save functionality knows to update or insert based on what the value of $hasWhereClause is in QueryBuilder, $hasWhereClause is no longer private.
-- The Database in elegant has been modified, with a new function, resultsetObject that achieves what we want.
+# Elegant
+This directory is the heart of this mvc project, Elegant is an Object Relational Mapper framework. The goal of  Elegant is to produce a framework enabling PHP developers to interact with the relational database MySQL through object-oriented PHP instead of having to write out and execute MySQL queries (with its own custom database query builder and handler) producing cleaner, and more readable code. The framework allows the developer to connect to a database through a configuration file. After that, the developer is expected to create a class based on a table in the database which inherits from our Model class. Our Model class will then provide the functionality necessary to interface with that database table.
 
-#Example:
-- viewbook.php
-<pre><code class="language-php">
-        //sugesstion put logic for when a single result has been found, database has row count for queries which returns the possible count
-        //that way i can decide to call wheter to call fetch or fetchALL
-        foreach ($book as $b ) 
-        {	
-            echo $b->title;
-        }
-</code></pre>
