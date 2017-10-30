@@ -16,7 +16,7 @@ ini_set('display_errors',1);
 
 </br>
 
-<img class="relationsImage" src="assets/images/OneToMany.png"></img>
+<img class="relationsImage" src="assets/images/OneToMany.PNG"></img>
 </br>
 <h3> Customers Orders </h3>
 
