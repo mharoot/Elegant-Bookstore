@@ -1,4 +1,3 @@
-
 .grey-b{
     padding:0;
     margin:0;
@@ -18,7 +17,8 @@
     display:inline-block;
     border: solid 1px #000;
     min-height: 200px;
-    width: 300px;
+    width: 100%;
+    margin-top:5%;
 }
 
 /* DOCUMENTATION PAGE STYLES */
@@ -78,16 +78,7 @@
         height:3em;
 }
 
-#navbar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    color: white;
-    padding-left:15%;
-    /* text-align: center; */
-    z-index: 10;/* https://stackoverflow.com/questions/34106499/how-can-i-stop-a-div-that-is-scrolling-over-the-navbar */
-}
+
 
 #buttons {
     /* https://stackoverflow.com/questions/34106499/how-can-i-stop-a-div-that-is-scrolling-over-the-navbar */
@@ -117,8 +108,8 @@
 }
 html,body
 {
-    /* width: 100%;
-    height: 100%; */
+   /* width: 100%;
+    height: 100%;*/
     margin: 0;
     padding: 0;
     margin-left:5%;
@@ -153,13 +144,6 @@ html, body::-webkit-scrollbar  {
 
 .footer {
     background-color:rgb(60, 105, 146);
-    width:100%;
-    z-index: 10;   
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-
 }
 
 
