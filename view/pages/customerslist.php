@@ -36,4 +36,12 @@ ini_set('display_errors',1);
 
 	?>
 </table>
+<form method="POST">
+  <div class="form-group">
+    <input class="form-control" type="text" name="customerName" placeholder="Name" required>
+    <input class="form-control" type="text" name="customerAddress" placeholder="Address" required>
+    <input class="form-control" type="text" pattern="\d+" name="orderAmount" placeholder="Amount" required>
+    <input type="submit" class="btn btn-info" value="Submit" name="insert-customer">
+  </div>
+</form>
 </div>

@@ -9,11 +9,11 @@ ALL GET, PUT, DELETE, POST calls go through here for the website
 include_once("model/Book.php");
 include_once("model/Author.php");
 include_once("model/Customer.php");
-
+include_once("model/Order.php");
 class Controller {
     public $book_model;
     public $author_model;
-    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist'];
+    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer'];
     
     public function __construct()  
    {  
@@ -128,6 +128,35 @@ class Controller {
                 $this->redirect();
 
             }
+
+            if(isset($_POST['insert-customer']))
+           {
+               $customer = new Customer();
+               $order = new Order();
+               $name = $_POST['customerName'];
+               $address = $_POST['customerAddress'];
+               $amount = $_POST['orderAmount'];
+
+               $result = $customer->where('address','=',$address)->where('name','=',$name)->get();
+
+               if($result == NULL)
+               {
+
+                    $customer->name = $name;
+                    $customer->address = $address;
+                    $customer->save();
+                    $order->amount = $amount;
+                    $order->customer_id = $customer->lastInsertId();
+                    $order->save();
+               }else{
+                
+                    $order->amount = $amount;
+                    $order->customer_id = $result[0]->id;
+                    $order->save();
+               }
+               $this->redirect();
+
+           }
 
             $this->putAndDeleteRequestHandler();         
         }
