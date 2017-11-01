@@ -51,6 +51,32 @@ class QueryBuilder
         return $query;
     }
 
+    public function select ($cols = NULL)
+    {
+        $this->query = 'SELECT ';
+
+        if ($cols == null) 
+        {
+            // we have not specified what columns we want to retrieve, so we assume all is wanted
+            $this->query .= "*";
+        }
+        else // we have specified what columns we want to retrieve
+        {   
+
+            $length = sizeof($cols) -1;
+
+            for ($i = 0; $i < $length; $i++) 
+            {
+                $this->query.= $cols[$i] . ", ";
+            }
+
+            $this->query.= $cols[$length];
+        }
+        $this->query.= " FROM ".$this->table_name;
+
+        return $this;
+    }
+
     public function update($col_val_pairs)
     {
         if (!$this->hasWhereClause)

@@ -17,6 +17,27 @@ class QueryBuilderTest extends TestCase
         $queryBuilder = new QueryBuilder($table_name);
         $this->assertEquals($queryBuilder->all(), 'SELECT * FROM '.$table_name);
     }
+/*  this test only runs when i turn QueryBuilder->query into public, it passed and is no longer needed
+    public function test_select()
+    {
+        $table_name    = 'books';
+        $queryBuilder  = new QueryBuilder($table_name);
+        $qbQuery       = $queryBuilder->select()->query;
+
+        $this->assertEquals($qbQuery, 'SELECT * FROM '.$table_name);
+    }
+
+    public function test_select_w_params()
+    {
+        $table_name    = 'books';
+        $queryBuilder  = new QueryBuilder($table_name);
+        $selected_cols = ['book_id', 'title', 'description'];
+        $qbQuery       = $queryBuilder->select($selected_cols)->query;
+
+        $this->assertEquals($qbQuery, 'SELECT book_id, title, description FROM '.$table_name);
+    }
+*/
+
 
     public function test_where_get()
     {
