@@ -13,12 +13,20 @@ include_once("model/Order.php");
 class Controller {
     public $book_model;
     public $author_model;
+    public $customer_model;
+    public $order_model;
     public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer'];
     
     public function __construct()  
    {  
+    if( $this->book_model !=null)
+    {
+        return;
+    }
        $this->book_model = new Book();
        $this->author_model = new Author();
+       $this->customer_model = new Customer();
+       $this->order_model = new Order();
 
    }
     
@@ -71,8 +79,7 @@ class Controller {
                 $foreign_table  = 'orders';
                 $pk             = 'id'; //customers table id
                 $fk             = 'customer_id';
-                $customer_model = new Customer();
-                $customers = $customer_model->oneToMany($foreign_table, $pk , $fk)->get();
+                $customers = $this->customer_model->oneToMany($foreign_table, $pk , $fk)->get();
 
                 include 'view/templates/header.php';
                 include 'view/pages/customerslist.php';
@@ -131,28 +138,27 @@ class Controller {
 
             if(isset($_POST['insert-customer']))
            {
-               $customer = new Customer();
-               $order = new Order();
+            
                $name = $_POST['customerName'];
                $address = $_POST['customerAddress'];
                $amount = $_POST['orderAmount'];
 
-               $result = $customer->where('address','=',$address)->where('name','=',$name)->get();
+               $result = $this->customer_model->where('address','=',$address)->where('name','=',$name)->get();
 
                if($result == NULL)
                {
 
-                    $customer->name = $name;
-                    $customer->address = $address;
-                    $customer->save();
-                    $order->amount = $amount;
-                    $order->customer_id = $customer->lastInsertId();
-                    $order->save();
+                    $this->customer_model->name = $name;
+                    $this->customer_model->address = $address;
+                    $this->customer_model->save();
+                    $this->order_model->amount = $amount;
+                    $this->order_model->customer_id = $this->customer_model->lastInsertId();
+                    $this->order_model->save();
                }else{
                 
-                    $order->amount = $amount;
-                    $order->customer_id = $result[0]->id;
-                    $order->save();
+                    $this->order_model->amount = $amount;
+                    $this->order_model->customer_id = $result[0]->id;
+                    $this->order_model->save();
                }
                $this->redirect();
 
@@ -273,7 +279,7 @@ class Controller {
     private function redirect() 
     {
         ob_start();
-        header('Location: '.$this->base_url());
+        header('Location: '. $this->base_url());
         ob_end_flush();
         die();
     }

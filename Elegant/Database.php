@@ -1,14 +1,12 @@
 <?php
+include_once('PDOConnection.php');
  ini_set('display_errors',1);
-//error_reporting(E_ALL);
+ error_reporting(E_ALL);
 //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-error_reporting(E_ERROR); // report errors only
+//error_reporting(E_ERROR);
 
 class Database {
-	private $host       ;
-	private $user       ;
-	private $password   ;
-	private $database   ;
+
 
 	private $connection = null;
 	private $error = null;
@@ -18,45 +16,19 @@ class Database {
 	function __construct() 
 	{
 		include_once('dbconfig.php');
-		$this->host     = DB_HOST;
-		$this->user     = DB_USER;
-		$this->password = DB_PASS;
-		$this->database = DB_NAME;
-		$conn = $this->connectDB();
-		$this->connection = $conn;
+		
+		$this->connection = PDOConnection::getInstance()->connection;
 	}
 	
-
-	private function connectDB() {
-		if($this->connection!=null)
-		{
-			return $this->connection;
-		}
-
-		 //Set DSN
-		 $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->database. ';charset=utf8';
-		 // Set options
-		$options = array(
-		PDO::ATTR_PERSISTENT => true, 
-		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-		);
-
-        // Create a new PDO instanace
-        try{
-            $this->connection = new PDO($dsn, $this->user, $this->password, $options);
-        }
-        // Catch any errors
-        catch(PDOException $e){
-            $this->error = $e->getMessage();
-        }
-
-		return $this->connection;
-	}
 
 	public function query($query){
 		if($this->connection!=null)
     	$this->stmt = $this->connection->prepare($query);
-		else
+		else{
+			$con= $this->connectDB();
+			$this->connection = $con;
+			$this->stmt = $this->connection->prepare($query);
+		}
 		 return;
 	}
 
@@ -84,10 +56,13 @@ class Database {
 
     /* if your using CUD operationgs: only creating, updating, or deleting you just call execute */
 	public function execute(){
-		if($this->stmt!=null)
-		return $this->stmt->execute();
-		else
-		 return;
+        $result = false;
+		if($this->stmt!=null) 
+		{
+            $result = $this->stmt->execute();
+        }
+		
+		 return $result;
 	}
 
     /*
@@ -108,6 +83,7 @@ class Database {
 
 	public function describe($tableName)
 	{
+		
 		$this->query("DESCRIBE ".$tableName);
 		$this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -138,4 +114,4 @@ class Database {
 	}
 
 }
-?>	
+?>
