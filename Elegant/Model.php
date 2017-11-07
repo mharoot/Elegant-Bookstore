@@ -115,9 +115,7 @@ class Model extends Database
 
     private function update($col_val_pairs)
     {
-        var_dump ($col_val_pairs);
         $q = $this->queryBuilder->update($col_val_pairs);
-        var_dump ($q."!!");
         if ($q == '')
         {
              //redirect('error404.php');
@@ -144,7 +142,6 @@ class Model extends Database
     private function insert($col_val_pairs)
     {
         $q = $this->queryBuilder->insert($col_val_pairs);
-        var_dump($q);
         if ($q == '')
         {
              // redirect('error404.php');
@@ -154,14 +151,12 @@ class Model extends Database
         // prepare the query before binding
         $this->query($q);
         reset($col_val_pairs);
-        var_dump($col_val_pairs);
         // PDO security of insert
         while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
             $this->bind(':'.$key, $val);
         }
                 
-       var_dump($this->stmt);
         return $this->execute();
     }
 

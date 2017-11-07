@@ -121,7 +121,6 @@ class QueryBuilder
         reset($col_val_pairs);
         $i = 0;
         $query .= $this->query;
-        var_dump($query.' #2 QB');
         $this->resetProperties();
         return $query;
     }

@@ -29,7 +29,6 @@ class Database {
 			$this->connection = $con;
 			$this->stmt = $this->connection->prepare($query);
 		}
-		//var_dump($this->stmt);
 		 return;
 	}
 
