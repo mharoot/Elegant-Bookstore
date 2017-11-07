@@ -8,7 +8,7 @@ include_once('model/Book.php');
 
 class BookTest extends TestCase
 {
-    public function test_testing_is_ready(){$this->assertTrue(TRUE);}
+    // public function test_testing_is_ready(){$this->assertTrue(TRUE);}
 
     public function test_book_all_function()
     {
@@ -56,6 +56,7 @@ class BookTest extends TestCase
         $this->assertTrue(sizeof($result) > 0);
     }
 
+    
     public function test_one_to_one_get_cols_or_where_or_where_chain_function()
     {
         $cols = array('title', 'description', 'genre_name');
@@ -92,36 +93,38 @@ class BookTest extends TestCase
     {
         $primary_key = 'book_id';
         $book = new Book();
-        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
-        $result = $book->where($primary_key,'=','1')->update($col_val_pairs);
+        $book->title = 'The Algorithm Design Manual';
+        $book->description = 'Cool book dude!';
+        $result = $book->where($primary_key,'=','1')->save();
         $this->assertTrue($result);
     }
     
-    public function test_update_only_shoud_return_false()
+    public function test_insert()
     {
         $book = new Book();
-        $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book and dude!"];
-        $result = $book->update($col_val_pairs);
-        $this->assertTrue($result==FALSE);
+        $book->title = 'The Algorithm Design Manual 2nd edition';
+        $book->description = 'Coolest book dude!';
+        $result = $book->save();
+        $this->assertTrue($result==TRUE);
     }
 
     public function test_where_delete()
     {
-        $title = 'The Algorithm Design Manual';
+        $title = 'The Algorithm Design Manual 2nd edition';
         $book = new Book();
         $result = $book->deleteByTitle($title);
         $this->assertTrue($result);
     }
     
-    public function test_grandparent_inheritance_of_database()
-    {
-        $book = new Book();
-        $book->query(
-            "INSERT INTO books (book_id, title, description, genre_id) VALUES".
-            "(1, 'The Algorithm Design Manual', 'This newly expanded and updated second edition of the best-selling classic continues to take the ".'\"mystery\"'." out of designing algorithms, and analyzing their efficacy and efficiency. Expanding on the first edition, the book now serves as the primary textbook of choice for algorithm design courses while maintaining its status as the premier practical reference guide to algorithms for programmers, researchers, and students.', 1)");
-        $this->assertTrue($book->execute());
+    // public function test_grandparent_inheritance_of_database()
+    // {
+    //     $book = new Book();
+    //     $book->query(
+    //         "INSERT INTO books (book_id, title, description, genre_id) VALUES".
+    //         "(1, 'The Algorithm Design Manual', 'This newly expanded and updated second edition of the best-selling classic continues to take the ".'\"mystery\"'." out of designing algorithms, and analyzing their efficacy and efficiency. Expanding on the first edition, the book now serves as the primary textbook of choice for algorithm design courses while maintaining its status as the premier practical reference guide to algorithms for programmers, researchers, and students.', 1)");
+    //     $this->assertTrue($book->execute());
         
-    }
+    // }
 
 
 }

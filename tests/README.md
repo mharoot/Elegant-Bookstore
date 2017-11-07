@@ -12,9 +12,14 @@ phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/Elegant/QueryBuilde
 
 #In order to run Book Tests on windows use the following command:
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --testdox
+phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --verbose 
 
 #In order to run Customer Tests on windows use the following command:
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Customer.php tests/CustomerTest.php --testdox
 
+
+#use verbose for debugging in tests
+You may uncomment the following in a test to view it.  Use this as a template.
+// echo '| String qbQuery = "'.$qbQuery.'"; |'; // do a dump replace --testdox with --verbose 
 
 

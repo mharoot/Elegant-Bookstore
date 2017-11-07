@@ -43,8 +43,9 @@ class QueryBuilderTest extends TestCase
     {
         $table_name = 'books';
         $queryBuilder = new QueryBuilder($table_name);
-        $qbQuery = $queryBuilder->where('id','=','1')->get();
-        $query   = "SELECT * FROM ".$table_name." WHERE id='1'";
+        $qbQuery = $queryBuilder->where('id','=')->get();
+        // echo '| String qbQuery = "'.$qbQuery.'"; |'; // do a --verbose dump
+        $query   = "SELECT * FROM books WHERE id=:id ";
         $this->assertEquals( $qbQuery, $query);
     }
 
@@ -52,11 +53,12 @@ class QueryBuilderTest extends TestCase
     {
         $table_name = 'books';
         $queryBuilder = new QueryBuilder($table_name);
-        $qbQuery = $queryBuilder->where('id','=','1')->where('genre_id', '=', '1')->get();
-        $query   = "SELECT * FROM ".$table_name." WHERE id='1' AND genre_id='1'";
+        $qbQuery = $queryBuilder->where('id','=')->where('genre_id', '=')->get();
+        $query   = "SELECT * FROM ".$table_name." WHERE id=:id  AND genre_id=:genre_id ";
         $this->assertEquals( $qbQuery, $query);
 
     }
+
 
     // public function test_one_to_many_get(){}
 
@@ -99,8 +101,8 @@ class QueryBuilderTest extends TestCase
         $primary_key = 'book_id';
         $queryBuilder = new QueryBuilder($primary_table_name);
         $col_val_pairs = ['title' => 'The Algorithm Design Manual', 'description' => "Cool book dude!"];
-        $qbQuery = $queryBuilder->where($primary_key,'=','1')->update($col_val_pairs);
-        $query = "UPDATE books SET title = :title, description = :description WHERE book_id='1'";
+        $qbQuery = $queryBuilder->where($primary_key,'=')->update($col_val_pairs);
+        $query = "UPDATE books SET title = :title, description = :description WHERE book_id=:book_id ";
         $this->assertEquals( $qbQuery, $query);
     }
 
@@ -128,6 +130,5 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals( $qbQuery, $query);
     }    
 
-    
 }
 ?>

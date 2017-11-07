@@ -11,7 +11,7 @@ class Database {
 	private $connection = null;
 	private $error = null;
 	
-	private $stmt = null;
+	public $stmt = null;
 
 	function __construct() 
 	{
@@ -29,6 +29,7 @@ class Database {
 			$this->connection = $con;
 			$this->stmt = $this->connection->prepare($query);
 		}
+		//var_dump($this->stmt);
 		 return;
 	}
 
@@ -49,14 +50,16 @@ class Database {
 				$type = PDO::PARAM_STR;
 			}
 		}
-
+		
 		$this->stmt->bindValue($param, strip_tags($value), $type);
+		
 
 	}
 
     /* if your using CUD operationgs: only creating, updating, or deleting you just call execute */
 	public function execute(){
-        $result = false;
+		$result = false;
+		
 		if($this->stmt!=null) 
 		{
             $result = $this->stmt->execute();

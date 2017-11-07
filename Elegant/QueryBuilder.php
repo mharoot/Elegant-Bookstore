@@ -96,8 +96,8 @@ class QueryBuilder
         UPDATE users SET user_password_hash = :user_password_hash WHERE user_id = :user_id
 
 
-        $query_update->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
-        $query_update->bindValue(':user_id', $result_row->user_id, PDO::PARAM_INT);
+        $query_update->bindValue(:user_password_hash', $user_password_hash, PDO::PARAM_STR);
+        $query_update->bindValue(:user_id', $result_row->user_id, PDO::PARAM_INT);
         
         
         
@@ -121,6 +121,7 @@ class QueryBuilder
         reset($col_val_pairs);
         $i = 0;
         $query .= $this->query;
+        var_dump($query.' #2 QB');
         $this->resetProperties();
         return $query;
     }
@@ -168,22 +169,47 @@ class QueryBuilder
         return $query;
     }
 
-    public function where ( $col_name, $arg2, $arg3 )
+
+        
+   /**
+    * 
+    *  About Where:
+    *  It prepares model for binding sanitized input.  You cannot pass in a WHERE
+    *  clause in a safe fashion period end of story As of now there is a Security 
+    *  issue prepare for all possible user input.
+    *
+    *  Assumption:
+    *      The where function was built assuming only there can be only one WHERE clause in an sql query.
+    *
+    *  @param string $col_name is use to prepare :$col_name for binding
+    *  @param string $arg2 = {=,>,<,<=,>=,LIKE}
+    * 
+    */
+    public function where ( $col_name, $arg2 )
     {
-        if ( ! $this->hasWhereClause ) 
-        {
-            if ($this->query == '')
-            {
-                $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+        
+        
+        if ( ! $this->hasWhereClause ) // where has not been called already
+        {   // then add WHERE
+
+            if ($this->query == '') // the query string is not filled
+            {   //then prepare for a call to delete or update to append to front of the query string
+
+
+                // " WHERE USERNAME=:username "
+                //              WHERE    USERNAME   =     :   username 
+                $this->query =" WHERE ".$col_name.$arg2.":".$col_name." ";
             }
             else
             {
-                $this->query .=" WHERE ".$col_name.$arg2."'".$arg3."'";
+                $this->query .=" WHERE ".$col_name.$arg2.":".$col_name." ";
             }
         } 
         else 
         {
-             $this->query .=" AND ".$col_name.$arg2."'".$arg3."'";
+            // " WHERE USERNAME=:username AND PASSWORD=:pass"
+            //                AND    PASSWORD   =     :  pass
+             $this->query .=" AND ".$col_name.$arg2.":".$col_name." ";
         }
 
         $this->hasWhereClause = TRUE;
@@ -196,22 +222,22 @@ class QueryBuilder
 
 
 
-    public function orWhere ( $col_name, $arg2, $arg3 )
+    public function orWhere ( $col_name, $arg2)
     {
         if ( ! $this->hasWhereClause ) 
         {
             if ($this->query == '')
             {
-                $this->query =" WHERE ".$col_name.$arg2."'".$arg3."'";
+                $this->query =" WHERE ".$col_name.$arg2.":".$col_name." ";
             }
             else
             {
-                $this->query .=" WHERE ".$col_name.$arg2."'".$arg3."'";
+                $this->query .=" WHERE ".$col_name.$arg2.":".$col_name." ";
             }
         } 
         else 
         {
-             $this->query .=" OR ".$col_name.$arg2."'".$arg3."'";
+             $this->query .=" OR ".$col_name.$arg2.":".$col_name." ";
         }
 
         $this->hasWhereClause = TRUE;

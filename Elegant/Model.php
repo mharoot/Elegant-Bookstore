@@ -8,6 +8,7 @@ class Model extends Database
     private $child_class  = NULL;
     public $table_name = NULL;
     private $child_class_cols = [];
+    private $whereColValBindStack = [];
 
 
 
@@ -76,10 +77,20 @@ class Model extends Database
         return $results;
     }
 
+    private function bindWhereConditions()
+    {
+        while (sizeof($this->whereColValBindStack))
+        {
+            $col_val = array_pop($this->whereColValBindStack);
+            $this->bind(':'.$col_val[0], $col_val[1]);
+        }
+    }
+
     public function get($cols = NULL)
     {
         $q = $this->queryBuilder->get($cols);
         $this->query($q);
+        $this->bindWhereConditions();
         $class_name = get_class($this->child_class);
         $results    = $this->resultsetObject($class_name);
 
@@ -97,48 +108,34 @@ class Model extends Database
             return false;
         }
         $this->query($q);
+        $this->bindWhereConditions();
         return $this->execute();
     }
 
 
     private function update($col_val_pairs)
     {
-        
+        var_dump ($col_val_pairs);
         $q = $this->queryBuilder->update($col_val_pairs);
+        var_dump ($q."!!");
         if ($q == '')
         {
              //redirect('error404.php');
             return false;
         }
-        /*
-        
-        to do:
-        1. update query builder insert
-        2. update query builder update
-        3. update model insert  (do binding in here)
-        4. update model update  (do binding in here)
-        
-        UPDATE users SET user_password_hash = :user_password_hash WHERE user_id = :user_id
-
-
-        $query_update->bind(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
-        $query_update->bind(':user_id', $result_row->user_id, PDO::PARAM_INT);
-        
-
-        'INSERT INTO users (user_type, first_name, last_name) VALUES (:user_type, :first_name, :last_name)'
-        
-        
-        $query_update->execute();
-        */
-
-        //prepare the query before binding
+       
+        // prepare the query before binding
         $this->query($q);
         reset($col_val_pairs);
-        //PDO security of update
+
+        // PDO security of update
         while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
             $this->bind(':'.$key, $val);
         }
+
+        $this->bindWhereConditions();
+
         
 
         return $this->execute();
@@ -146,31 +143,43 @@ class Model extends Database
 
     private function insert($col_val_pairs)
     {
-        $this->checkTableExist();
         $q = $this->queryBuilder->insert($col_val_pairs);
+        var_dump($q);
         if ($q == '')
         {
-             //redirect('error404.php');
+             // redirect('error404.php');
             return false;
         }
 
-        //prepare the query before binding
+        // prepare the query before binding
         $this->query($q);
         reset($col_val_pairs);
-        //PDO security of insert
+        var_dump($col_val_pairs);
+        // PDO security of insert
         while ( list( $key, $val ) = each( $col_val_pairs ) ) 
         {
             $this->bind(':'.$key, $val);
         }
                 
-       
+       var_dump($this->stmt);
         return $this->execute();
     }
 
 
     public function where ($col_name, $arg2, $arg3 )
     {
-        $this->queryBuilder->where($col_name, $arg2, $arg3);
+        $this->queryBuilder->where($col_name, $arg2);
+
+        // lets build a stack of where col arg val statements so we can pop and bind clean sanitized input
+        array_push($this->whereColValBindStack, [$col_name, $arg3]);
+
+        // after update delete or get is called we pop the stack till its empty binding the parameters  array_pop($stack);
+       
+        // this will go in update, delete, and get 
+        // array_pop($this->whereColValBindStack)
+        // $this->bind(':'.$col_name, $arg3);
+        
+
         return $this;
     }
 
@@ -180,7 +189,8 @@ class Model extends Database
 
     public function orWhere ($col_name, $arg2, $arg3 ) 
     {
-        $this->queryBuilder->orWhere($col_name, $arg2, $arg3);
+        $this->queryBuilder->orWhere($col_name, $arg2);
+        array_push($this->whereColValBindStack, [$col_name, $arg3]);
         return $this;
     }
 
