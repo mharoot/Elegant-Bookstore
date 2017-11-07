@@ -1,6 +1,9 @@
 <?php
  ini_set('display_errors',1);
- error_reporting(E_ALL);
+//error_reporting(E_ALL);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+error_reporting(E_ERROR); // report errors only
+
 class Database {
 	private $host       ;
 	private $user       ;
@@ -34,7 +37,7 @@ class Database {
 		 $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->database. ';charset=utf8';
 		 // Set options
 		$options = array(
-		PDO::ATTR_PERSISTENT => false, 
+		PDO::ATTR_PERSISTENT => true, 
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 		);
 
@@ -74,7 +77,9 @@ class Database {
 				$type = PDO::PARAM_STR;
 			}
 		}
-		$this->stmt->bindValue($param, $value, $type);
+
+		$this->stmt->bindValue($param, strip_tags($value), $type);
+
 	}
 
     /* if your using CUD operationgs: only creating, updating, or deleting you just call execute */
@@ -133,4 +138,4 @@ class Database {
 	}
 
 }
-?>
+?>	
