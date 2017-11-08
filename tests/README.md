@@ -1,7 +1,7 @@
 
 <h2>In order to run tests on linux/mac use the following commands:</h2>
 </br>
-<h3>QueryBuilderTest<h3>
+<h3>QueryBuilderTest</h3>
 <code>phpunit --bootstrap  Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox</code>
 </br>
 <h3>BookTest</h3>
@@ -10,7 +10,7 @@
 
 <h2>In order to run tests on windows use the following commands:</h2>
 </br>
-<h3>Query Builder Test<h3>
+<h3>Query Builder Test</h3>
 <code>
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox
 </code>
