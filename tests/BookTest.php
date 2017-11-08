@@ -116,15 +116,14 @@ class BookTest extends TestCase
         $this->assertTrue($result);
     }
     
-    // public function test_grandparent_inheritance_of_database()
-    // {
-    //     $book = new Book();
-    //     $book->query(
-    //         "INSERT INTO books (book_id, title, description, genre_id) VALUES".
-    //         "(1, 'The Algorithm Design Manual', 'This newly expanded and updated second edition of the best-selling classic continues to take the ".'\"mystery\"'." out of designing algorithms, and analyzing their efficacy and efficiency. Expanding on the first edition, the book now serves as the primary textbook of choice for algorithm design courses while maintaining its status as the premier practical reference guide to algorithms for programmers, researchers, and students.', 1)");
-    //     $this->assertTrue($book->execute());
-        
-    // }
+    public function test_reset_books_table()
+    {
+        include_once('Elegant/Database.php');
+        $db_handler = new Database();
+        $q = file_get_contents('sql/resetBooks.sql');
+        $db_handler->query($q);
+        $this->assertTrue($db_handler->execute());
+    }
 
 
 }
