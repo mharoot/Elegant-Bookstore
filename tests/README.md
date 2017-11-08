@@ -38,10 +38,8 @@ phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Customer.php 
 echo '| String qbQuery = "'.$qbQuery.'"; |'; // do a dump replace --testdox 
 </code>
 </br></br>
-<code>
-phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --testdox
+<code>phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --testdox
 </code>
 
-<code>
-phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --verbose 
+<code>phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --verbose 
 </code>
