@@ -1,5 +1,5 @@
 
-#In order to run tests on linux/mac use the following commands:
+<h2>In order to run tests on linux/mac use the following commands:</h2>
 
 #QueryBuilderTest
 phpunit --bootstrap  Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox
