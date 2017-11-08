@@ -1,25 +1,29 @@
 
-#In order to run QueryBuilder Tests on linux use the following command:
+#In order to run tests on linux/mac use the following commands:
+
+#QueryBuilderTest
 phpunit --bootstrap  Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox
 
-#In order to run Book Tests on linux use the following command:
+#BookTest
 phpunit --bootstrap  model/Book.php tests/BookTest.php --testdox
+----------------------------------------------------------------------------
 
+#In order to run tests on windows use the following commands:
 
-#In order to run QueryBuilder Tests on windows use the following command:
+#QueryBuilderTest
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/Elegant/QueryBuilder.php tests/QueryBuilderTest.php --testdox
 
-
-#In order to run Book Tests on windows use the following command:
+#BookTest
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --testdox
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Book.php tests/BookTest.php --verbose 
 
-#In order to run Customer Tests on windows use the following command:
+#Customer Test
 phpunit --bootstrap c:/xampp/htdocs/github/Elegant-Bookstore/model/Customer.php tests/CustomerTest.php --testdox
 
 
-#use verbose for debugging in tests
-You may uncomment the following in a test to view it.  Use this as a template.
-// echo '| String qbQuery = "'.$qbQuery.'"; |'; // do a dump replace --testdox with --verbose 
+#Debugging in Terminal:
+change --testdox to --verbose and use either var_dump($object);
+or 
+echo '| String qbQuery = "'.$qbQuery.'"; |'; // do a dump replace --testdox 
 
 
