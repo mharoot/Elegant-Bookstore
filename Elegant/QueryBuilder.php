@@ -36,7 +36,31 @@ class QueryBuilder
         return 'SELECT * FROM '.$this->table_name;
        
     }
-    
+ 
+/*
+// delete ------  http://dev.mysql.com/doc/refman/5.6/en/delete.html  ------------------------
+delete_statements:
+	DELETE_SYM (LOW_PRIORITY)? (QUICK)? (IGNORE_SYM)?
+	( delete_single_table_statement | delete_multiple_table_statement1 | delete_multiple_table_statement2 )
+;
+delete_single_table_statement:
+	FROM table_spec
+	(partition_clause)?
+	(where_clause)?
+	(orderby_clause)?
+	(limit_clause)?
+;
+delete_multiple_table_statement1:
+	table_spec (ALL_FIELDS)? (COMMA table_spec (ALL_FIELDS)?)*
+	FROM table_references
+	(where_clause)?
+;
+delete_multiple_table_statement2:
+	FROM table_spec (ALL_FIELDS)? (COMMA table_spec (ALL_FIELDS)?)*
+	USING_SYM table_references
+	(where_clause)?
+;
+*/
     public function delete()
     {
         if (!$this->hasWhereClause)
@@ -51,6 +75,37 @@ class QueryBuilder
         return $query;
     }
 
+    
+/*
+select ------  http://dev.mysql.com/doc/refman/5.6/en/select.html  -------------------------------
+select_statement:
+        select_expression ( (UNION_SYM (ALL)?) select_expression )* 
+;
+
+select_expression:
+	SELECT 
+	
+	( ALL | DISTINCT | DISTINCTROW )? 
+	(HIGH_PRIORITY)?
+	(STRAIGHT_JOIN)?
+	(SQL_SMALL_RESULT)? (SQL_BIG_RESULT)? (SQL_BUFFER_RESULT)?
+	(SQL_CACHE_SYM | SQL_NO_CACHE_SYM)? (SQL_CALC_FOUND_ROWS)?
+
+	select_list
+	
+	( 
+		FROM table_references 
+		( partition_clause )?
+		( where_clause )? 
+		( groupby_clause )?
+		( having_clause )?
+	) ?
+	
+	( orderby_clause )?
+	( limit_clause )?
+	( ( FOR_SYM UPDATE) | (LOCK IN_SYM SHARE_SYM MODE_SYM) )? 
+;
+*/
     public function select ($cols = NULL)
     {
         $this->query = 'SELECT ';
@@ -77,6 +132,26 @@ class QueryBuilder
         return $this;
     }
 
+/*
+// update --------  http://dev.mysql.com/doc/refman/5.6/en/update.html  ------------------------
+update_statements :
+	single_table_update_statement | multiple_table_update_statement
+;
+
+single_table_update_statement: 
+UPDATE (LOW_PRIORITY)? (IGNORE_SYM)? table_reference
+	set_columns_cluase
+	(where_clause)?
+	(orderby_clause)?
+	(limit_clause)?
+;
+
+multiple_table_update_statement: 
+	UPDATE (LOW_PRIORITY)? (IGNORE_SYM)? table_references
+	set_columns_cluase
+	(where_clause)?
+;
+*/
     public function update($col_val_pairs)
     {
         if (!$this->hasWhereClause)
@@ -125,6 +200,47 @@ class QueryBuilder
         return $query;
     }
 
+
+/*
+// insert ---------  http://dev.mysql.com/doc/refman/5.6/en/insert.html  -------------------------
+insert_statements :
+	insert_statement1 | insert_statement2 | insert_statement3
+;
+
+insert_header:
+	INSERT (LOW_PRIORITY | HIGH_PRIORITY)? (IGNORE_SYM)?
+	(INTO)? table_spec 
+	(partition_clause)?
+;
+
+insert_subfix:
+	ON DUPLICATE_SYM KEY_SYM UPDATE column_spec EQ_SYM expression (COMMA column_spec EQ_SYM expression)*
+;
+
+insert_statement1:
+	insert_header
+	(column_list)? 
+	value_list_clause
+	( insert_subfix )?
+;
+value_list_clause:	(VALUES | VALUE_SYM) column_value_list (COMMA column_value_list)*;
+column_value_list:	LPAREN (bit_expr|DEFAULT) (COMMA (bit_expr|DEFAULT) )* RPAREN ;
+
+insert_statement2:
+	insert_header
+	set_columns_cluase
+	( insert_subfix )?
+;
+set_columns_cluase:	SET_SYM set_column_cluase ( COMMA set_column_cluase )*;
+set_column_cluase:	column_spec EQ_SYM (expression|DEFAULT) ;
+
+insert_statement3:
+	insert_header
+	(column_list)? 
+	select_expression
+	( insert_subfix )?
+;
+*/
     public function insert($col_val_pairs)
     {
 
