@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 include_once("Elegant/Model.php");
-//include_once("C:/xampp/htdocs/Elegant-Bookstore3/Elegant/Model.php");
 
 class Customer extends Model {
 
@@ -20,11 +19,10 @@ class Customer extends Model {
 
 	}
 
-	public function create ($name, $address, $pass)
+	public function create ($name, $address)
 	{ 
 		$this->name = $name;
 		$this->address = $address;
-		$this->pass = $pass;
 		return $this->save();
 	}
 

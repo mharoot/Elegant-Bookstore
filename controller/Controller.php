@@ -10,13 +10,12 @@ include_once("model/Book.php");
 include_once("model/Author.php");
 include_once("model/Customer.php");
 include_once("model/Order.php");
-
 class Controller {
     public $book_model;
     public $author_model;
     public $customer_model;
     public $order_model;
-    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer', 'user', 'pass', 'pass2', 'signUp', 'status', 'userLogin', 'passLogin', 'logout'];
+    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer'];
     
     public function __construct()  
    {  
@@ -57,7 +56,7 @@ class Controller {
         $this->postRequestHandler();
 
 
-        
+
 
         
     }
@@ -117,20 +116,7 @@ class Controller {
                 include 'view/templates/footer.php';
             }
 
-            if(isset($_GET['signUp']))
-            {
-                include 'view/templates/header.php';
-                include 'view/pages/signUp.php';
-                include 'view/templates/footer.php';
-            }
-  
-            if(isset($_GET['logout']))
-            {
-                include 'view/templates/header.php';
-                include 'view/pages/logout.php';
-                include 'view/templates/footer.php';
-                $this->redirect();
-            }
+
         }
     }
 
@@ -148,75 +134,6 @@ class Controller {
                 $db_handler->execute();
                 $this->redirect();
 
-            }
-
-            //signup
-            if( isset($_POST['user']) && isset($_POST['pass']) && isset($_POST['pass2']))
-            {
-                $name = $_POST['user'];
-                //$address = $_POST['pass'];
-                $password = $_POST['pass'];
-                $password2 = $_POST['pass2'];
-
-                //if  ($address == $password2)
-                if  ($password == $password2)
-                {
-                    $this->customer_model->name = $name;
-                    $this->customer_model->pass = $password;
-                    //$this->customer_model->address = $address;
-                    $this->customer_model->save();
-                    //$this->redirect();
-                    //header("index.php?signUp?status=correct"); /* Redirect browser */
-                    $this->redirect();
-                    
-                }
-                else
-                {
-                    $this->redirect("view/booklist.php");
-                   // header("booklist.php");
-                }
-                
-            }
-            
-            //login
-            if( isset($_POST['userLogin']) && isset($_POST['passLogin']) )
-            {
-                $name = $_POST['userLogin'];
-                $password = $_POST['passLogin'];
-                $cols = array('name', 'pass');
-                $result = $this->customer_model->where('name', '=',  $name)->where('pass', '=', $password)->get($cols);
-               
-                //echo $result[0]->name;
-                if ($result != null)
-                {
-                    $_SESSION['user'] = $name;
-                    $_SESSION['pass'] = $password;
-                    $this->redirect();
-                }
-                else
-                {
-                    echo "Invalid username or password";
-                    //echo "<meta http-equiv='refresh' content='5; url=HOME.php/>";
-                             //assuming you're looking at 30 seconds
-                        //sleep(4);
-                        $this->redirect();
-                    
-                    
-                }
-            }
-            
-            if(isset($_POST['logout']))
-            {
-                $_SESSION=array();
-                
-                    if (session_id() != "" || isset($_COOKIE[session_name()]))
-                    {
-                        setcookie(session_name(), '', time()-2592000, '/');
-                
-                        session_destroy();
-                    }
-                    
-                    $this->redirect();
             }
 
             if(isset($_POST['insert-customer']))

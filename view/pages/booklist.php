@@ -5,27 +5,8 @@ ini_set('display_errors',1);
  ?>
 
 <div class="jumbotron">
-<h2> elegant ORM - Many to Many Relations</h2>
+<h2> Elegant OR - Many to Many Relations</h2>
 <p> A book can have many authors, and an author can write many books.  The Elegant ORM code snippet required for these results: </p> 
-
-<p><?php require_once 'loginBox.php'; ?></p>
-<p>
-<?php 
-if (isset($_SESSION['user']))
-{
-	$user = $_SESSION['user'];
-	echo "you are logged in as <span style='color: #0000FF'>$user </span> <br />";
-	//echo "click <a href='index.php?logout'>here</a> to log out";
-	echo "click here to log out"; 
-	echo "<form method='POST'><input type='submit' name='logout' value='logout' /></form>";
-	echo " ";
-}
-else
-{
-	echo "Not a member? Sign up <a href='index.php?signUp'>here</a>";
-} 
-?>
-</p>
 
 
 <pre class="language-php"><p><code class="CodeFlask__code  language-php"><span class="token variable">$cols</span>  <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'author_name'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
