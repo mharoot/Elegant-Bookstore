@@ -15,7 +15,7 @@ class Controller {
     public $author_model;
     public $customer_model;
     public $order_model;
-    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer'];
+    public $_routes = ['author', 'book', 'uml', 'documentation', 'query-builder', 'update-viewbook', '_method', 'deleteBookByTitle', 'deleteBookByTitleButton', 'resetBooks', 'customerslist', 'insert-customer', 'home-page', 'sign-up'];
     
     public function __construct()  
    {  
@@ -116,7 +116,19 @@ class Controller {
                 include 'view/templates/footer.php';
             }
 
+            if (isset($_GET['home-page']))
+            {
+                $books = $this->book_model->getBookList();
+                include 'view/pages/homepage.php';
+                
+            }
 
+            if (isset($_GET['sign-up']))
+            {
+                
+                include 'view/pages/signup.php';
+                
+            }
         }
     }
 
@@ -162,6 +174,30 @@ class Controller {
                }
                $this->redirect();
 
+           }
+
+           if( isset($_POST['user']) && isset($_POST['pass']) && isset($_POST['pass2']))
+           {
+               $name = $_POST['user'];
+               $password = $_POST['pass'];
+               $password2 = $_POST['pass2'];
+
+                if  ($password == $password2)
+                {
+                   $this->customer_model->name = $name;
+                   $this->customer_model->pass = $password;
+                   $this->customer_model->save();
+                   //$this->redirect();
+                   echo "<script> location.href='./?sign-up&status=correct'; </script>";
+                   //exit;
+                   
+               }
+               else
+               {
+                   //$this->redirect("view/booklist.php");
+                   echo "<script> location.href='./?sign-up&status=incorrect'; </script>";
+               }
+               
            }
 
             $this->putAndDeleteRequestHandler();         

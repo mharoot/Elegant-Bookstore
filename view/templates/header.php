@@ -42,6 +42,10 @@
           <form class="dropdown-item" method="POST"><input style="background-color:inherit; border:none; padding:0; margin:0;" type="submit" name="resetBooks" value="Reset Books Table"></form>
         </div>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="./?home-page">Home Page</a> <!-- home-page is going to be 
+      sent via url and processed on Controller.php-->
+      </li>
     </ul>
   </div>
 </nav>
